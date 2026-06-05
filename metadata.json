@@ -1,0 +1,6 @@
+{
+  "name": "FOC - Home of Beauty World",
+  "description": "Modern, luxurious, and highly attractive business website for FOC, featuring premium beauty services, spa treatments, luxury wigs, perfumes, and custom booking and shop experiences.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
