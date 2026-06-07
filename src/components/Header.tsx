@@ -16,8 +16,9 @@ export default function Header({ activePage, setActivePage, cartCount, onCartCli
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services & Pampering' },
     { id: 'shop', label: 'Luxury Shop' },
-    { id: 'booking', label: 'Book Appointment' },
     { id: 'gallery', label: 'Transformation Gallery' },
+    { id: 'blog', label: 'Luxury Blog' },
+    { id: 'booking', label: 'Book Appointment' },
     { id: 'about', label: 'About FOC' },
     { id: 'contact', label: 'Contact & FAQ' }
   ];
@@ -80,28 +81,6 @@ export default function Header({ activePage, setActivePage, cartCount, onCartCli
           >
             <Calendar className="h-3 w-3 shrink-0" />
             BOOK APPOINTMENT
-          </button>
-
-          {/* Interactive Cart Bag Toggle */}
-          <button
-            onClick={onCartClick}
-            className="relative flex h-10 w-10 items-center justify-center rounded-none bg-white/5 hover:bg-gold-400 hover:text-black text-[#f5eae4] transition-all cursor-pointer focus:outline-none border border-white/10"
-            id="shopping-bag-icon-btn"
-            title="Open Luxury Cart"
-          >
-            <ShoppingBag className="h-4 w-4" />
-            <AnimatePresence>
-              {cartCount > 0 && (
-                <motion.span
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  exit={{ scale: 0 }}
-                  className="absolute -top-1 -right-1 flex h-4.5 w-4.5 items-center justify-center rounded-none bg-gold-400 text-[9px] font-black text-black border border-black"
-                >
-                  {cartCount}
-                </motion.span>
-              )}
-            </AnimatePresence>
           </button>
 
           {/* Mobile Hamburguer Drawer Toggle */}

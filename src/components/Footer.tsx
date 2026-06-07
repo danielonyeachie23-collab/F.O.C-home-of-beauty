@@ -72,6 +72,7 @@ export default function Footer({ setActivePage }: FooterProps) {
               <button onClick={() => setActivePage('shop')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-shop">Boutique Corner</button>
               <button onClick={() => setActivePage('booking')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-booking">Schedule Grace</button>
               <button onClick={() => setActivePage('gallery')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-gallery">Transformations</button>
+              <button onClick={() => setActivePage('blog')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-blog">Luxury Archives</button>
             </div>
           </div>
 
@@ -85,11 +86,11 @@ export default function Footer({ setActivePage }: FooterProps) {
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-gold-400 shrink-0" />
-                <a href="tel:+234800FOCBEAUTY" className="hover:text-gold-400 transition-colors">+234 800 FOC BEAUTY</a>
+                <a href="tel:+2348148149158" className="hover:text-gold-400 transition-colors">08148149158</a>
               </li>
               <li className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-gold-400 shrink-0" />
-                <a href="mailto:danielonyeachie23@gmail.com" className="hover:text-gold-400 transition-colors break-all">danielonyeachie23@gmail.com</a>
+                <a href="mailto:foccworld@gmail.com" className="hover:text-gold-400 transition-colors break-all">foccworld@gmail.com</a>
               </li>
             </ul>
           </div>

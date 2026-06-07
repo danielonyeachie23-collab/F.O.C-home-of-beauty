@@ -130,7 +130,7 @@ export default function Booking({ preselectedService, clearPreselection }: Booki
               <div className="flex justify-between"><span className="text-white/40">Assigned Hour:</span> <span className="text-gold-400 font-semibold">{selectedDate} &bull; {selectedTimeSlot}</span></div>
               <div className="flex justify-between"><span className="text-white/40">Client Guest:</span> <span className="text-white">{customerName}</span></div>
               <div className="flex justify-between"><span className="text-white/40">Phone Line:</span> <span className="text-white">{customerPhone}</span></div>
-              <div className="flex justify-between border-t border-white/10 pt-3 font-semibold text-gold-300"><span className="text-white">Admission Cost:</span> <span className="font-serif font-bold text-white text-base">${selectedService.price}</span></div>
+              <div className="flex justify-between border-t border-white/10 pt-3 font-semibold text-gold-300"><span className="text-white">Admission Cost:</span> <span className="font-serif font-bold text-[#D4AF37] text-base">₦{selectedService.price.toLocaleString()}</span></div>
             </div>
 
             <p className="mt-6 text-xs text-white/50 max-w-lg mx-auto leading-relaxed font-light">
@@ -180,7 +180,7 @@ export default function Booking({ preselectedService, clearPreselection }: Booki
                     >
                       {SERVICES.map((serv) => (
                         <option key={serv.id} value={serv.id} className="bg-[#111] text-white">
-                          [{serv.category}] &bull; {serv.name} &bull; ${serv.price}
+                          [{serv.category}] &bull; {serv.name} &bull; ₦{serv.price.toLocaleString()}
                         </option>
                       ))}
                     </select>
@@ -218,37 +218,133 @@ export default function Booking({ preselectedService, clearPreselection }: Booki
                   </div>
                 </div>
 
-                {/* 1.3 Available Time Slots */}
+                {/* 1.3 Custom Preferred Time Picker with High Contrast AM/PM Toggle Buttons */}
                 <div className="space-y-3">
-                  <label className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/50 block">Pick Timetable Slot</label>
-                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                    {timeSlots.map((slot) => {
-                      const isSelected = selectedTimeSlot === slot;
-                      return (
-                        <button
-                          key={slot}
-                          type="button"
-                          onClick={() => setSelectedTimeSlot(slot)}
-                          className={`flex items-center justify-center gap-1.5 py-3 rounded-none border text-xs font-bold uppercase tracking-wider cursor-pointer transition ${
-                            isSelected
-                              ? 'bg-gold-400 text-black border-transparent font-black'
-                              : 'bg-[#0A0A0A] border-white/10 text-white/70 hover:bg-gold-400/10 hover:border-gold-400'
-                          }`}
-                          id={`time-slot-${slot.replace(/[\s:]/g, '-')}`}
+                  <label className="text-[10px] font-bold tracking-[0.15em] uppercase text-white/50 block">Set Your Preferred Arrival Time</label>
+                  <div className="bg-[#0A0A0A] border border-white/10 p-5 space-y-4">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {/* Hour dropdown */}
+                      <div className="space-y-1.5 text-left">
+                        <label className="text-[9px] font-bold tracking-widest text-[#f5eae4]/40 uppercase">Hour</label>
+                        <select
+                          value={(() => {
+                            try {
+                              const [time] = selectedTimeSlot.split(' ');
+                              const [h] = time.split(':');
+                              return parseInt(h, 10).toString().padStart(2, '0');
+                            } catch (e) {
+                              return '10';
+                            }
+                          })()}
+                          onChange={(e) => {
+                            try {
+                              const newHour = e.target.value;
+                              const [, ampm] = selectedTimeSlot.split(' ');
+                              const [time] = selectedTimeSlot.split(' ');
+                              const [, m] = time.split(':');
+                              setSelectedTimeSlot(`${newHour}:${m} ${ampm || 'AM'}`);
+                            } catch (err) {
+                              setSelectedTimeSlot(`${e.target.value}:30 AM`);
+                            }
+                          }}
+                          className="w-full rounded-none bg-black border border-white/15 px-4 py-3 text-sm font-semibold text-white focus:border-gold-400 focus:outline-none transition-all cursor-pointer"
+                          id="hour-selector"
                         >
-                          <Clock className="h-3.5 w-3.5" />
-                          <span>{slot}</span>
-                        </button>
-                      );
-                    })}
+                          {['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'].map((h) => (
+                            <option key={h} value={h} className="bg-black text-white">{h}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* Minute dropdown */}
+                      <div className="space-y-1.5 text-left">
+                        <label className="text-[9px] font-bold tracking-widest text-[#f5eae4]/40 uppercase">Minute</label>
+                        <select
+                          value={(() => {
+                            try {
+                              const [time] = selectedTimeSlot.split(' ');
+                              const [, m] = time.split(':');
+                              return m.padStart(2, '0');
+                            } catch (e) {
+                              return '30';
+                            }
+                          })()}
+                          onChange={(e) => {
+                            try {
+                              const newMin = e.target.value;
+                              const [, ampm] = selectedTimeSlot.split(' ');
+                              const [time] = selectedTimeSlot.split(' ');
+                              const [h] = time.split(':');
+                              setSelectedTimeSlot(`${h}:${newMin} ${ampm || 'AM'}`);
+                            } catch (err) {
+                              setSelectedTimeSlot(`10:${e.target.value} AM`);
+                            }
+                          }}
+                          className="w-full rounded-none bg-black border border-white/15 px-4 py-3 text-sm font-semibold text-white focus:border-gold-400 focus:outline-none transition-all cursor-pointer"
+                          id="minute-selector"
+                        >
+                          {['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55'].map((m) => (
+                            <option key={m} value={m} className="bg-black text-white">{m}</option>
+                          ))}
+                        </select>
+                      </div>
+
+                      {/* AM / PM Segmented Control Button */}
+                      <div className="space-y-1.5 text-left">
+                        <label className="text-[9px] font-bold tracking-widest text-[#f5eae4]/40 uppercase block mb-1">Period (AM / PM)</label>
+                        <div className="grid grid-cols-2 gap-2">
+                          {['AM', 'PM'].map((ap) => {
+                            const currentAmpm = selectedTimeSlot.split(' ')[1] || 'AM';
+                            const isActive = currentAmpm === ap;
+                            return (
+                              <button
+                                key={ap}
+                                type="button"
+                                onClick={() => {
+                                  try {
+                                    const [time] = selectedTimeSlot.split(' ');
+                                    const [h, m] = time.split(':');
+                                    setSelectedTimeSlot(`${h}:${m} ${ap}`);
+                                  } catch (e) {
+                                    setSelectedTimeSlot(`10:30 ${ap}`);
+                                  }
+                                }}
+                                className={`py-3 text-xs font-bold tracking-wider uppercase border transition duration-200 cursor-pointer ${
+                                  isActive
+                                    ? 'bg-gold-400 text-black border-transparent font-extrabold shadow shadow-gold-500/20'
+                                    : 'bg-black/50 border-white/10 text-white/50 hover:bg-white/5 hover:border-white/20'
+                                }`}
+                                id={`period-selector-${ap}`}
+                              >
+                                {ap}
+                              </button>
+                            );
+                          })}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Integrated preview bubble */}
+                    <div className="bg-white/[0.02] border border-white/5 p-4 text-center flex flex-col items-center justify-center">
+                      <span className="text-[9px] font-bold tracking-wider text-[#f5eae4]/40 uppercase block">Configured Arrival Hour:</span>
+                      <div className="flex items-center gap-2 mt-1.5">
+                        <Clock className="h-4 w-4 text-gold-400" />
+                        <span className="text-gold-400 text-xl font-extrabold tracking-widest uppercase block animate-pulse">
+                          {selectedTimeSlot}
+                        </span>
+                      </div>
+                    </div>
                   </div>
+                  <p className="text-[10px] text-white/40 leading-relaxed font-light font-mono text-center sm:text-left">
+                    *Our therapists are at desk between 9:00 AM and 9:00 PM. Set your custom hours above.
+                  </p>
                 </div>
 
                 {/* Action Row */}
                 <div className="pt-6 border-t border-white/10 flex items-center justify-between">
                   <div className="text-xs">
                     <span className="text-white/40 block uppercase tracking-widest text-[9px]">Estimated Charge:</span>
-                    <span className="font-serif text-2xl font-normal text-gold-400">${selectedService.price}</span>
+                    <span className="font-serif text-2xl font-normal text-gold-400">₦{selectedService.price.toLocaleString()}</span>
                   </div>
                   <button
                     type="button"

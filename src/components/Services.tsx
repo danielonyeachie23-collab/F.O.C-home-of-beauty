@@ -9,18 +9,21 @@ interface ServicesProps {
 }
 
 export default function Services({ onSelectService }: ServicesProps) {
-  const [selectedCategory, setSelectedCategory] = useState<'All' | 'Beauty Services' | 'Spa Treatments' | 'Tattoo Services'>('All');
+  const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories: ('All' | 'Beauty Services' | 'Spa Treatments' | 'Tattoo Services')[] = [
+  const categories: string[] = [
     'All',
-    'Beauty Services',
-    'Spa Treatments',
-    'Tattoo Services'
+    'Facials',
+    'Pedicure',
+    'Waxing',
+    'Scrub',
+    'Massage',
+    'Teeth Whitening'
   ];
 
   const filteredServices = selectedCategory === 'All' 
     ? SERVICES 
-    : SERVICES.filter(s => s.category === selectedCategory);
+    : SERVICES.filter(s => s.category.toLowerCase() === selectedCategory.toLowerCase());
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 font-sans text-white">
@@ -91,7 +94,7 @@ export default function Services({ onSelectService }: ServicesProps) {
                     {service.category}
                   </span>
                   <span className="font-serif text-2xl font-normal text-gold-400">
-                    ${service.price}
+                    ₦{service.price.toLocaleString()}
                   </span>
                 </div>
                 

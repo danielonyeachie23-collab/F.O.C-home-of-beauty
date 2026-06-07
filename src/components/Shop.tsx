@@ -81,7 +81,7 @@ export default function Shop({ cart, setCart, isCartOpen, setIsCartOpen }: ShopP
     return cart.reduce((acc, item) => acc + (item.product.price * item.quantity), 0);
   }, [cart]);
 
-  const deliveryFee = subtotal > 200 ? 0 : 25; // Complimentary above $200
+  const deliveryFee = subtotal > 150000 ? 0 : 5000; // Complimentary above ₦150,000
   const grandTotal = subtotal + deliveryFee;
 
   const handleCheckoutSubmit = (e: React.FormEvent) => {
@@ -222,18 +222,22 @@ export default function Shop({ cart, setCart, isCartOpen, setIsCartOpen }: ShopP
                 {/* Purchase Button Frame */}
                 <div className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between">
                   <div>
-                    <span className="text-[9px] font-bold text-white/30 block uppercase tracking-wider">Bespoke price</span>
-                    <span className="font-serif text-2xl font-normal text-gold-400">${product.price}</span>
+                    <span className="text-[9px] font-bold text-white/35 block uppercase tracking-wider">Availability</span>
+                    <span className="font-serif text-[11px] font-bold tracking-widest text-[#f5eae4]/75">ON REQUEST</span>
                   </div>
                   
-                  <button
-                    onClick={() => handleAddToCart(product)}
-                    className="flex items-center justify-center gap-1.5 rounded-none bg-gold-400 px-5 py-3 text-[10px] font-bold tracking-[0.15em] text-black uppercase hover:bg-gold-300 transition duration-300 cursor-pointer"
+                  <a
+                    href={`https://wa.me/2348148149158?text=${encodeURIComponent(
+                      `Hello FOC Luxury! I would like to make an enquiry regarding: ${product.name}. Please provide details on how I can proceed to purchase this valuable.`
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-1.5 rounded-none bg-gold-400 px-4 py-3 text-[10px] font-bold tracking-[0.15em] text-black uppercase hover:bg-gold-300 transition duration-300 cursor-pointer"
                     id={`buy-${product.id}`}
                   >
-                    <Plus className="h-3.5 w-3.5" />
-                    ADD TO CART
-                  </button>
+                    <ShoppingBag className="h-3.5 w-3.5" />
+                    INQUIRE ON WHATSAPP
+                  </a>
                 </div>
               </div>
             );
@@ -295,7 +299,7 @@ export default function Shop({ cart, setCart, isCartOpen, setIsCartOpen }: ShopP
                     <div className="flex justify-between"><span className="text-white/50">Client Name:</span> <span className="font-semibold text-white">{deliveryInfo.name}</span></div>
                     <div className="flex justify-between"><span className="text-white/50">Phone Node:</span> <span className="text-white">{deliveryInfo.phone}</span></div>
                     <div className="flex justify-between"><span className="text-white/50">Address Hub:</span> <span className="text-white/90 text-right font-light italic max-w-[200px]">{deliveryInfo.address}, {deliveryInfo.city}</span></div>
-                    <div className="flex justify-between border-t border-white/10 pt-3 font-semibold text-gold-300"><span className="text-white">Total Charge:</span> <span>${grandTotal}</span></div>
+                    <div className="flex justify-between border-t border-white/10 pt-3 font-semibold text-gold-300"><span className="text-white">Total Charge:</span> <span>₦{grandTotal.toLocaleString()}</span></div>
                   </div>
 
                   <p className="mt-6 text-xs text-white/50 leading-relaxed font-light max-w-sm">
@@ -377,9 +381,9 @@ export default function Shop({ cart, setCart, isCartOpen, setIsCartOpen }: ShopP
                   {/* Pricing and form buttons */}
                   <div className="mt-8 pt-4 border-t border-white/10 space-y-4">
                     <div className="space-y-2.5 text-xs text-white/60">
-                      <div className="flex justify-between"><span>Luxury Items subotal:</span> <span className="font-serif text-white">${subtotal}</span></div>
-                      <div className="flex justify-between"><span>Secured transport couriers:</span> <span className="font-serif text-white">{deliveryFee === 0 ? 'Complimentary' : `$${deliveryFee}`}</span></div>
-                      <div className="flex justify-between font-bold text-gold-300 border-t border-white/10 pt-2 text-sm"><span>Total checkout sum:</span> <span className="font-serif font-bold">${grandTotal}</span></div>
+                      <div className="flex justify-between"><span>Luxury Items subotal:</span> <span className="font-serif text-white">₦{subtotal.toLocaleString()}</span></div>
+                      <div className="flex justify-between"><span>Secured transport couriers:</span> <span className="font-serif text-white">{deliveryFee === 0 ? 'Complimentary' : `₦${deliveryFee.toLocaleString()}`}</span></div>
+                      <div className="flex justify-between font-bold text-gold-300 border-t border-white/10 pt-2 text-sm"><span>Total checkout sum:</span> <span className="font-serif font-bold text-gold-400">₦{grandTotal.toLocaleString()}</span></div>
                     </div>
 
                     <div className="flex gap-3">
@@ -437,7 +441,7 @@ export default function Shop({ cart, setCart, isCartOpen, setIsCartOpen }: ShopP
                             
                             <div className="flex-1 text-xs">
                               <h4 className="font-serif text-base font-normal text-white line-clamp-1">{item.product.name}</h4>
-                              <p className="text-gold-400 mt-0.5 font-semibold font-serif">${item.product.price} each</p>
+                              <p className="text-gold-400 mt-0.5 font-semibold font-serif">₦{item.product.price.toLocaleString()} each</p>
                               
                               <div className="mt-2.5 flex items-center justify-between">
                                 {/* Quantity Toggles */}
@@ -474,12 +478,12 @@ export default function Shop({ cart, setCart, isCartOpen, setIsCartOpen }: ShopP
                       {/* Footer Totals */}
                       <div className="pt-4 border-t border-white/10 space-y-4">
                         <div className="space-y-2 text-xs text-white/60">
-                          <div className="flex justify-between"><span>Items Subtotal:</span> <span className="font-serif text-white">${subtotal}</span></div>
-                          <div className="flex justify-between"><span>Secured Courier Transport:</span> <span className="font-serif text-white">{deliveryFee === 0 ? 'Complimentary' : `$${deliveryFee}`}</span></div>
+                          <div className="flex justify-between"><span>Items Subtotal:</span> <span className="font-serif text-white">₦{subtotal.toLocaleString()}</span></div>
+                          <div className="flex justify-between"><span>Secured Courier Transport:</span> <span className="font-serif text-white">{deliveryFee === 0 ? 'Complimentary' : `₦${deliveryFee.toLocaleString()}`}</span></div>
                           {deliveryFee > 0 && (
-                            <p className="text-[9px] text-gold-400/80 italic text-right font-bold tracking-wider">ADD ${200 - subtotal} MORE FOR COMPLIMENTARY TRANSPORT.</p>
+                            <p className="text-[9px] text-gold-400/80 italic text-right font-bold tracking-wider">ADD ₦{(150000 - subtotal).toLocaleString()} MORE FOR COMPLIMENTARY TRANSPORT.</p>
                           )}
-                          <div className="flex justify-between font-bold text-gold-350 border-t border-white/10 pt-2 text-sm"><span>Total Bill:</span> <span className="font-serif font-black text-white">${grandTotal}</span></div>
+                          <div className="flex justify-between font-bold text-gold-350 border-t border-white/10 pt-2 text-sm"><span>Total Bill:</span> <span className="font-serif font-black text-white">₦{grandTotal.toLocaleString()}</span></div>
                         </div>
  
                         {/* Order action button */}

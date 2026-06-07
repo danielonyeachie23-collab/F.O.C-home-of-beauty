@@ -8,6 +8,7 @@ import Booking from './components/Booking';
 import Gallery from './components/Gallery';
 import About from './components/About';
 import Contact from './components/Contact';
+import Blog from './components/Blog';
 import { Service, Product, CartItem } from './types';
 import { MessageSquare, Send, X, Check, Heart, Sparkles, Smile } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
@@ -87,7 +88,7 @@ export default function App() {
       if (lower.includes('wig') || lower.includes('hair') || lower.includes('lace')) {
         ceoReply = 'Ah, our Empress HD Wigs are magnificent! Sewn from 100% human virgin hair. You can view our live fittings inside the "Luxury Shop" page or schedule a bespoke suite consultation on the "Book Appointment" tab!';
       } else if (lower.includes('price') || lower.includes('cost') || lower.includes('much')) {
-        ceoReply = 'Our pampering starts at $55 for our couture manicures, up to $250 for full Signature Brow Microblading. Take a look at the "Services & Pampering" sheet to evaluate benefits!';
+        ceoReply = 'Our pampering starts at ₦9,000 for Sugar Waxing, up to ₦100,050 for our signature Foc Special package. Take a look at the "Services & Pampering" sheet to evaluate benefits!';
       } else if (lower.includes('wax') || lower.includes('pedicure') || lower.includes('scrub') || lower.includes('appointment')) {
         ceoReply = 'Excellent taste! Our Royal Facial exfoliations and 24K Gold Body Scrub sessions are popular. I suggest securing your hour directly on the "Book Appointment" tab to choose tomorrow’s slots!';
       } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
@@ -196,6 +197,18 @@ export default function App() {
               transition={{ duration: 0.3 }}
             >
               <About />
+            </motion.div>
+          )}
+
+          {activePage === 'blog' && (
+            <motion.div
+              key="blog"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <Blog />
             </motion.div>
           )}
 

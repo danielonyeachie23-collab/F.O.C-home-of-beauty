@@ -3,7 +3,7 @@ export interface Service {
   name: string;
   price: number;
   duration: string;
-  category: 'Beauty Services' | 'Spa Treatments' | 'Tattoo Services';
+  category: string;
   description: string;
   benefits: string[];
   image: string;

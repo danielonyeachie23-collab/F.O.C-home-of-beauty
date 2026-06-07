@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Sparkles, Star, ShieldCheck, Heart, Award, ArrowUpRight } from 'lucide-react';
-import { SERVICES, PRODUCTS, TESTIMONIALS, HERO_IMAGE } from '../data';
+import { ArrowRight, Sparkles, Star, ShieldCheck, Heart, Award, ArrowUpRight, Image as ImageIcon } from 'lucide-react';
+import { SERVICES, PRODUCTS, TESTIMONIALS, HERO_IMAGE, PHYSICAL_SALON_IMAGE } from '../data';
 import { Service, Product } from '../types';
 
 interface HomeProps {
@@ -14,6 +15,17 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
   const featuredServices = SERVICES.slice(0, 3);
   const featuredProducts = PRODUCTS.slice(0, 3);
 
+  // Toggle background between physical boutique rendering (default) and standard cinematic studio
+  const [bgType, setBgType] = useState<'physical' | 'cinematic'>(() => {
+    const saved = localStorage.getItem('foc_bg_type');
+    return (saved === 'cinematic' ? 'cinematic' : 'physical');
+  });
+
+  const handleBgToggle = (type: 'physical' | 'cinematic') => {
+    setBgType(type);
+    localStorage.setItem('foc_bg_type', type);
+  };
+
   return (
     <div className="font-sans text-nude-100 overflow-hidden">
       
@@ -22,14 +34,16 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
         {/* Background Premium Image Overlay */}
         <div className="absolute inset-0 overflow-hidden">
           <img
-            src={HERO_IMAGE}
+            src={bgType === 'physical' ? PHYSICAL_SALON_IMAGE : HERO_IMAGE}
             alt="FOC Luxury Salon Background"
-            className="h-full w-full object-cover opacity-35 scale-105 transition-transform duration-[12000ms] ease-out hover:scale-100"
+            className="h-full w-full object-cover opacity-35 scale-105 transition-all duration-[6000ms] ease-out hover:scale-100"
+            key={bgType}
             referrerPolicy="no-referrer"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80" />
           <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-black/90" />
         </div>
+
 
         {/* Content Container */}
         <div className="relative z-10 mx-auto max-w-5xl text-center">
@@ -82,10 +96,39 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
           </motion.div>
         </div>
 
-        {/* Floating Indicator */}
-        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-1.5 opacity-40">
+        {/* Floating Locator Indicator */}
+        <div className="absolute bottom-6 left-6 md:left-12 flex items-center gap-1.5 opacity-60 z-20">
           <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
           <span className="text-[9px] font-medium tracking-widest uppercase text-white/50">Victoria Island, Lagos</span>
+        </div>
+
+        {/* Ambient Toggle Switch Panel - Premium Ambient Background Controller */}
+        <div className="absolute bottom-6 right-6 md:right-12 z-20 flex items-center gap-1.5 bg-black/85 border border-white/10 p-1.5 rounded-none shadow-2xl backdrop-blur-md">
+          <span className="text-[9.5px] font-bold tracking-[0.15em] text-[#f5eae4]/40 uppercase pl-2 pr-1 select-none hidden sm:inline-flex items-center gap-1.5">
+            <ImageIcon className="h-3 w-3 text-gold-400" /> AMBIENCE:
+          </span>
+          <button
+            onClick={() => handleBgToggle('physical')}
+            className={`px-3 py-1.5 text-[9px] font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer ${
+              bgType === 'physical'
+                ? 'bg-gold-400 text-black font-extrabold shadow shadow-gold-400/20'
+                : 'text-white/60 hover:bg-white/5 hover:text-white'
+            }`}
+            id="bg-select-physical"
+          >
+            Bespoke Lounge
+          </button>
+          <button
+            onClick={() => handleBgToggle('cinematic')}
+            className={`px-3 py-1.5 text-[9px] font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer ${
+              bgType === 'cinematic'
+                ? 'bg-gold-400 text-black font-extrabold shadow shadow-gold-400/20'
+                : 'text-white/60 hover:bg-white/5 hover:text-white'
+            }`}
+            id="bg-select-cinematic"
+          >
+            Cinematic Studio
+          </button>
         </div>
       </section>
 
@@ -189,7 +232,7 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
 
                   <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
                     <span className="font-serif text-2xl font-normal text-gold-400">
-                      ${service.price}
+                      ₦{service.price.toLocaleString()}
                     </span>
                     <button
                       onClick={() => onBookService(service)}
@@ -287,8 +330,8 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
                       {product.name}
                     </h3>
                   </div>
-                  <span className="font-serif text-lg font-normal text-gold-400 shrink-0">
-                    ${product.price}
+                  <span className="text-[9px] font-bold tracking-[0.1em] text-white/30 uppercase shrink-0">
+                    BY INQUIRY
                   </span>
                 </div>
 
@@ -297,13 +340,18 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
                 </p>
 
                 {/* Overlay buy button */}
-                <button
-                  onClick={() => onQuickAddProduct(product)}
-                  className="mt-5 flex w-full items-center justify-center gap-1.5 rounded-none bg-white/5 py-3 text-[9px] font-bold tracking-[0.2em] text-gold-400 border border-gold-400/20 group-hover:bg-gold-400 group-hover:text-black group-hover:border-transparent transition-all duration-300 cursor-pointer uppercase"
+                <a
+                  href={`https://wa.me/2348148149158?text=${encodeURIComponent(
+                    `Hello FOC Luxury! I would like to make an enquiry regarding: ${product.name}. Please provide details on how I can proceed to purchase this valuable.`
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-5 flex w-full items-center justify-center gap-1.5 rounded-none bg-white/5 py-3 text-[9px] font-bold tracking-[0.2em] text-gold-400 border border-gold-400/20 group-hover:bg-gold-400 group-hover:text-black group-hover:border-transparent transition-all duration-300 cursor-pointer uppercase text-center"
                   id={`quick-add-${product.id}`}
                 >
-                  ADD TO LUXURY CART
-                </button>
+                  <Sparkles className="h-3 w-3" />
+                  INQUIRE ON WHATSAPP
+                </a>
               </div>
             ))}
           </div>

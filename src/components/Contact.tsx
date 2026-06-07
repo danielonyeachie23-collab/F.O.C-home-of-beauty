@@ -155,7 +155,7 @@ export default function Contact() {
               <Phone className="h-5 w-5 mt-0.5 text-gold-400 shrink-0" />
               <div className="text-xs">
                 <h4 className="font-bold text-white uppercase tracking-wider text-[10px]">Voice Hotlines</h4>
-                <p className="text-white/80 font-light mt-1"><a href="tel:+234800FOCBEAUTY" className="hover:text-gold-400 underline decoration-white/10">+234 800 FOC BEAUTY</a></p>
+                <p className="text-white/80 font-light mt-1"><a href="tel:+2348148149158" className="hover:text-gold-400 underline decoration-white/10">08148149158</a></p>
                 <p className="text-white/40 text-[9px] mt-0.5">Complementary concierge support</p>
               </div>
             </div>
@@ -164,7 +164,7 @@ export default function Contact() {
               <Mail className="h-5 w-5 mt-0.5 text-gold-400 shrink-0" />
               <div className="text-xs">
                 <h4 className="font-bold text-white uppercase tracking-wider text-[10px]">Emails Desk</h4>
-                <p className="text-white/80 font-light mt-1 select-all break-all"><a href="mailto:danielonyeachie23@gmail.com" className="hover:text-gold-400 underline decoration-white/10">danielonyeachie23@gmail.com</a></p>
+                <p className="text-white/80 font-light mt-1 select-all break-all"><a href="mailto:foccworld@gmail.com" className="hover:text-gold-400 underline decoration-white/10">foccworld@gmail.com</a></p>
                 <p className="text-white/40 text-[9px] mt-0.5">Inbox managed by assistants</p>
               </div>
             </div>
