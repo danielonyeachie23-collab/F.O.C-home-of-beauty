@@ -1,47 +1,36 @@
-import { useState } from 'react';
 import { motion } from 'motion/react';
-import { ArrowRight, Sparkles, Star, ShieldCheck, Heart, Award, ArrowUpRight, Image as ImageIcon } from 'lucide-react';
-import { SERVICES, PRODUCTS, TESTIMONIALS, HERO_IMAGE, PHYSICAL_SALON_IMAGE } from '../data';
-import { Service, Product } from '../types';
+import { ArrowRight, Sparkles, Star, ShieldCheck, Heart, Award, CheckCircle2, Clock, DollarSign, Eye } from 'lucide-react';
+import { TESTIMONIALS, HERO_IMAGE, PHYSICAL_SALON_IMAGE, SERVICES } from '../data';
 
 interface HomeProps {
   setActivePage: (page: string) => void;
-  onBookService: (service: Service) => void;
-  onQuickAddProduct: (product: Product) => void;
 }
 
-export default function Home({ setActivePage, onBookService, onQuickAddProduct }: HomeProps) {
-  // Grab a few featured elements for showcasing
-  const featuredServices = SERVICES.slice(0, 3);
-  const featuredProducts = PRODUCTS.slice(0, 3);
-
-  // Toggle background between physical boutique rendering (default) and standard cinematic studio
-  const [bgType, setBgType] = useState<'physical' | 'cinematic'>(() => {
-    const saved = localStorage.getItem('foc_bg_type');
-    return (saved === 'cinematic' ? 'cinematic' : 'physical');
-  });
-
-  const handleBgToggle = (type: 'physical' | 'cinematic') => {
-    setBgType(type);
-    localStorage.setItem('foc_bg_type', type);
-  };
+export default function Home({ setActivePage }: HomeProps) {
 
   return (
     <div className="font-sans text-nude-100 overflow-hidden">
       
       {/* 1. Large Luxury Hero Section */}
-      <section className="relative flex min-h-[90vh] items-center justify-center bg-black py-20 px-4">
-        {/* Background Premium Image Overlay */}
-        <div className="absolute inset-0 overflow-hidden">
+      <section className="relative flex min-h-screen items-center justify-center bg-black py-20 px-4">
+        {/* Background Premium Luxury Image and Grid Overlay */}
+        <div className="absolute inset-0 overflow-hidden bg-black z-0 pointer-events-none">
+          {/* Background Ambient Luxury Image */}
           <img
-            src={bgType === 'physical' ? PHYSICAL_SALON_IMAGE : HERO_IMAGE}
-            alt="FOC Luxury Salon Background"
-            className="h-full w-full object-cover opacity-35 scale-105 transition-all duration-[6000ms] ease-out hover:scale-100"
-            key={bgType}
+            src="/src/assets/images/IMG_20260605_170447.jpg"
+            alt="FOC World Luxury Sanctuary Background"
             referrerPolicy="no-referrer"
+            className="absolute inset-0 h-full w-full object-cover opacity-60 scale-100 transition-all duration-[6000ms] ease-out hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-black/80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-black/90" />
+
+          {/* Subtle grid pattern */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(212,175,55,0.02)_1px,transparent_1px),linear-gradient(to_bottom,rgba(212,175,55,0.02)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+          {/* Glowing ambient radial gold dust spots */}
+          <div className="absolute top-1/2 left-1/4 h-96 w-96 rounded-full bg-gold-400/5 blur-[120px] mix-blend-screen animate-pulse" />
+          <div className="absolute bottom-1/3 right-1/4 h-96 w-96 rounded-full bg-amber-500/5 blur-[150px] mix-blend-screen" />
+          
+          <div className="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-black/85" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/85 via-transparent to-black/85" />
         </div>
 
 
@@ -61,7 +50,7 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
 
             {/* Bold Headline */}
             <h1 className="font-serif text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-normal tracking-tight text-white leading-[1.1] lowercase">
-              Welcome to <span className="text-gold-400 italic">FOC</span> – <br className="hidden md:inline"/>
+              Welcome to <span className="text-gold-400 italic">FOC World</span> – <br className="hidden md:inline"/>
               <span className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-light italic text-[#f5eae4]/90 block mt-3 tracking-normal capitalize">
                 The Home of <span className="text-gold-400 font-bold not-italic">Beauty World</span>
               </span>
@@ -86,53 +75,33 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
 
               {/* Secondary Call-to-action */}
               <button
-                onClick={() => setActivePage('shop')}
+                onClick={() => setActivePage('services')}
                 className="flex w-full sm:w-64 items-center justify-center gap-2 rounded-none border border-white/30 bg-[#0A0A0A] px-10 py-4.5 text-xs font-bold tracking-[0.25em] text-white uppercase hover:bg-white/5 hover:border-gold-400 transition-all duration-300 cursor-pointer"
-                id="hero-shop-btn"
+                id="hero-services-btn"
               >
-                Shop Collection
+                Explore Services
               </button>
             </div>
           </motion.div>
         </div>
 
         {/* Floating Locator Indicator */}
-        <div className="absolute bottom-6 left-6 md:left-12 flex items-center gap-1.5 opacity-60 z-20">
-          <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
-          <span className="text-[9px] font-medium tracking-widest uppercase text-white/50">Victoria Island, Lagos</span>
+        <div className="absolute bottom-6 left-6 md:left-12 flex flex-wrap items-center gap-4 z-20">
+          <div className="flex items-center gap-1.5 opacity-60">
+            <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
+            <span className="text-[9px] font-medium tracking-widest uppercase text-white/50">Lugbe, Abuja</span>
+          </div>
         </div>
 
-        {/* Ambient Toggle Switch Panel - Premium Ambient Background Controller */}
-        <div className="absolute bottom-6 right-6 md:right-12 z-20 flex items-center gap-1.5 bg-black/85 border border-white/10 p-1.5 rounded-none shadow-2xl backdrop-blur-md">
-          <span className="text-[9.5px] font-bold tracking-[0.15em] text-[#f5eae4]/40 uppercase pl-2 pr-1 select-none hidden sm:inline-flex items-center gap-1.5">
-            <ImageIcon className="h-3 w-3 text-gold-400" /> AMBIENCE:
+        {/* Elegant boutique label */}
+        <div className="absolute bottom-6 right-6 md:right-12 z-20 flex items-center gap-1.5 bg-black/80 border border-white/10 px-4 py-2 rounded-none shadow-2xl backdrop-blur-md">
+          <span className="text-[10px] font-bold tracking-[0.2em] text-gold-400 uppercase select-none flex items-center gap-1.5">
+            FOC World BOUTIQUE & SALON
           </span>
-          <button
-            onClick={() => handleBgToggle('physical')}
-            className={`px-3 py-1.5 text-[9px] font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer ${
-              bgType === 'physical'
-                ? 'bg-gold-400 text-black font-extrabold shadow shadow-gold-400/20'
-                : 'text-white/60 hover:bg-white/5 hover:text-white'
-            }`}
-            id="bg-select-physical"
-          >
-            Bespoke Lounge
-          </button>
-          <button
-            onClick={() => handleBgToggle('cinematic')}
-            className={`px-3 py-1.5 text-[9px] font-bold tracking-widest uppercase transition-all duration-300 cursor-pointer ${
-              bgType === 'cinematic'
-                ? 'bg-gold-400 text-black font-extrabold shadow shadow-gold-400/20'
-                : 'text-white/60 hover:bg-white/5 hover:text-white'
-            }`}
-            id="bg-select-cinematic"
-          >
-            Cinematic Studio
-          </button>
         </div>
       </section>
 
-      {/* 2. Core Pillars / Why FOC */}
+      {/* 2. Core Pillars / Why FOC World */}
       <section className="bg-[#0c0c0c] py-24 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="grid grid-cols-1 gap-10 md:grid-cols-3">
@@ -161,7 +130,7 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
 
             {/* Pillar 3 */}
             <div className="flex flex-col items-center text-center p-10 rounded-none border border-white/5 bg-[#0e0e0e] hover:border-gold-400/30 transition-all duration-300 group">
-              <div className="flex h-14 w-14 items-center justify-center rounded-none bg-gold-950/20 border border-gold-400/40 group-hover:bg-gold-400 group-hover:text-black transition-all">
+              <div className="flex h-14 w-14 items-center justify-center rounded-none bg-[#0a0a0a] border border-gold-400/40 group-hover:bg-gold-400 group-hover:text-black transition-all">
                 <Heart className="h-6 w-6 text-gold-400 group-hover:text-black" />
               </div>
               <h3 className="mt-6 font-serif text-lg font-bold tracking-[0.2em] text-[#f5eae4] uppercase">Luxury Care</h3>
@@ -174,188 +143,71 @@ export default function Home({ setActivePage, onBookService, onQuickAddProduct }
         </div>
       </section>
 
-      {/* 3. Featured Pampering Services Slider / Grid */}
-      <section className="bg-black py-24 px-4 sm:px-6 lg:px-8 relative">
-        <div className="mx-auto max-w-7xl">
-          
-          {/* Section Header */}
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-14">
-            <div>
-              <span className="text-[10px] font-bold tracking-[0.35em] text-gold-400 uppercase">INDULGENCE RITUALS</span>
-              <h2 className="font-serif text-4xl sm:text-5xl font-normal tracking-tight text-white mt-2">
-                Featured <span className="italic">Beauty</span> & <span className="italic">Spa</span>
-              </h2>
-            </div>
-            <button
-              onClick={() => setActivePage('services')}
-              className="mt-4 md:mt-0 flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] text-gold-400 hover:text-white uppercase transition-colors cursor-pointer border-b border-gold-400 pb-1"
-              id="view-all-services-link"
-            >
-              EXAMINE FULL SERVICES MENU
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </button>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {featuredServices.map((service) => (
-              <div
-                key={service.id}
-                className="overflow-hidden rounded-none border border-white/10 bg-[#0c0c0c] transition-all duration-300 hover:border-gold-400/40 hover:-translate-y-1 flex flex-col h-full"
-              >
-                {/* Image Wrap */}
-                <div className="relative h-64 w-full overflow-hidden shrink-0">
-                  <img
-                    src={service.image}
-                    alt={service.name}
-                    className="h-full w-full object-cover transition-transform duration-500 hover:scale-[1.05]"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute top-4 right-4 rounded-none bg-[#0A0A0A] px-3.5 py-1.5 border border-white/10 text-[9px] font-bold text-gold-400 tracking-[0.15em]">
-                    {service.duration}
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className="flex-1 p-7 flex flex-col justify-between">
-                  <div>
-                    <span className="text-[9px] font-bold tracking-[0.25em] uppercase text-gold-400">
-                      {service.category}
-                    </span>
-                    <h3 className="mt-2 font-serif text-2xl font-normal tracking-wide text-white">
-                      {service.name}
-                    </h3>
-                    <p className="mt-3 text-xs text-white/60 leading-relaxed font-light line-clamp-3">
-                      {service.description}
-                    </p>
-                  </div>
-
-                  <div className="mt-8 pt-5 border-t border-white/10 flex items-center justify-between">
-                    <span className="font-serif text-2xl font-normal text-gold-400">
-                      ₦{service.price.toLocaleString()}
-                    </span>
-                    <button
-                      onClick={() => onBookService(service)}
-                      className="rounded-none bg-[#0A0A0A] border border-gold-400 px-5 py-2.5 text-[9px] font-bold tracking-[0.2em] text-gold-400 uppercase hover:bg-gold-400 hover:text-black hover:border-transparent transition"
-                      id={`book-service-${service.id}`}
-                    >
-                      INSTANT BOOK
-                    </button>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. Mini Promotional Spotlight with Luxury Video-like backdrop */}
-      <section className="relative bg-[#0d0d0d] py-28 px-4 sm:px-6 lg:px-8 text-center border-t border-b border-white/5">
-        {/* Soft geometric styling */}
-        <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px] opacity-5" />
+      {/* 4. The FOC World Visionary Story */}
+      <section className="relative bg-[#0d0d0d] py-24 sm:py-32 px-4 sm:px-6 lg:px-8 border-t border-b border-white/5 overflow-hidden text-center">
+        {/* Soft geometric styling background */}
+        <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:32px_32px] opacity-10 pointer-events-none" />
+        <div className="absolute top-1/2 left-0 h-[400px] w-[400px] rounded-full bg-gold-500/5 blur-[120px] pointer-events-none" />
         
-        <div className="relative z-10 mx-auto max-w-4xl">
-          <span className="text-[10px] font-bold tracking-[0.4em] text-white/50 uppercase">EMPOWERING CONFIDENCE</span>
-          <h2 className="mt-4 font-serif text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-tight">
-            Indulge In Luxury You <span className="italic">Truly</span> Deserve
+        <div className="relative z-10 mx-auto max-w-4xl space-y-4">
+          <div className="inline-flex items-center gap-1.5 rounded-none border border-gold-400/30 bg-gold-950/20 px-3 py-1.5 text-[9px] font-bold tracking-[0.25em] text-gold-400 uppercase">
+            <Sparkles className="h-3.5 w-3.5 shrink-0" />
+            <span>THE FOC WORLD VISIONARY STORY</span>
+          </div>
+          
+          <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-normal tracking-tight text-white leading-tight lowercase">
+            redefining self-care with <span className="text-gold-400 italic">decadent confidence</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-xl text-xs sm:text-sm leading-relaxed text-white/60 font-light font-sans tracking-wide">
-            FOC brings curated, globally acclaimed skincare therapy, authentic premium Brazilian HD lace wig solutions, and custom fine-line cosmetic pigmentation inside Victoria Island, Lagos.
+          
+          <p className="mx-auto mt-6 text-sm leading-relaxed text-white/70 font-light font-sans tracking-wide max-w-3xl">
+            FOC World represents the <strong>Family of Confidence</strong>. Founded on an unwavering vision to challenge standard, dry cosmetic routines, we have built a beautiful, high-fidelity physical oasis in federal housing Lugbe, Abuja. We bring together globally certified skincare technology, exquisite spa services, medically hygienic orthodontics, and therapeutic bodywork to pamper your physical frame and bolster your personal aura.
           </p>
-          <div className="mt-10 flex justify-center">
-            <button
+          
+          <div className="pt-2">
+            <button 
               onClick={() => setActivePage('about')}
-              className="rounded-none border border-gold-400 bg-transparent px-8 py-3.5 text-[10px] font-bold tracking-[0.25em] text-gold-400 uppercase hover:bg-gold-400 hover:text-black transition-all duration-300 cursor-pointer"
-              id="learn-foc-story-btn"
+              className="text-[10px] font-bold tracking-[0.2em] text-gold-400 hover:text-gold-300 transition-colors uppercase border-b border-gold-400/30 pb-1"
+              id="home-story-read-link"
             >
-              THE FOC VISIONARY STORY
+              Read Our Full Heritage Journey &rarr;
             </button>
           </div>
         </div>
       </section>
 
-      {/* 5. Featured Luxury Boutique Products */}
-      <section className="bg-black py-24 px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      {/* 5. Immersive Spa Video Tour Promo Section */}
+      <section className="relative bg-black py-20 px-4 sm:px-6 lg:px-8 border-b border-white/5">
+        <div className="mx-auto max-w-5xl rounded-none border border-gold-400/20 bg-[#070707] p-8 md:p-14 relative overflow-hidden group hover:border-gold-400/40 transition-all duration-500">
           
-          {/* Header */}
-          <div className="flex flex-col md:flex-row items-start md:items-end justify-between mb-14">
-            <div>
-              <span className="text-[10px] font-bold tracking-[0.35em] text-gold-400 uppercase">LA PETITE BOUTIQUE</span>
-              <h2 className="font-serif text-4xl sm:text-5xl font-normal tracking-tight text-white mt-2">
-                Stately <span className="italic">Curation</span> Essentials
-              </h2>
-            </div>
-            <button
-              onClick={() => setActivePage('shop')}
-              className="mt-4 md:mt-0 flex items-center gap-1.5 text-xs font-bold tracking-[0.2em] text-gold-400 hover:text-white uppercase transition duration-300 cursor-pointer border-b border-gold-400 pb-1"
-              id="view-all-shop-link"
-            >
-              EXPLORE FULL BOUTIQUE STORE
-              <ArrowUpRight className="h-3.5 w-3.5" />
-            </button>
-          </div>
-
-          {/* Catalog Grid */}
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-            {featuredProducts.map((product) => (
-              <div
-                key={product.id}
-                className="group relative overflow-hidden rounded-none border border-white/10 bg-[#0a0a0a] p-5 transition-all duration-300 hover:border-gold-400/40"
-              >
-                {/* Visual Frame */}
-                <div className="relative aspect-square overflow-hidden rounded-none bg-neutral-900">
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    referrerPolicy="no-referrer"
-                  />
-                  {product.rating >= 4.9 && (
-                    <div className="absolute top-3 left-3 flex items-center gap-1 rounded-none bg-gold-400 px-2.5 py-1 text-[8px] font-black text-black uppercase tracking-wider">
-                      <Star className="h-2.5 w-2.5 fill-current" />
-                      Signature Item
-                    </div>
-                  )}
-                </div>
-
-                {/* Info block */}
-                <div className="mt-5 flex items-start justify-between">
-                  <div>
-                    <span className="text-[9px] font-bold uppercase tracking-widest text-[#f5eae4]/50">
-                      {product.category}
-                    </span>
-                    <h3 className="mt-1 font-serif text-lg font-normal text-white leading-tight">
-                      {product.name}
-                    </h3>
-                  </div>
-                  <span className="text-[9px] font-bold tracking-[0.1em] text-white/30 uppercase shrink-0">
-                    BY INQUIRY
-                  </span>
-                </div>
-
-                <p className="mt-2 text-xs text-white/50 leading-relaxed font-light line-clamp-2">
-                  {product.description}
-                </p>
-
-                {/* Overlay buy button */}
-                <a
-                  href={`https://wa.me/2348148149158?text=${encodeURIComponent(
-                    `Hello FOC Luxury! I would like to make an enquiry regarding: ${product.name}. Please provide details on how I can proceed to purchase this valuable.`
-                  )}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-5 flex w-full items-center justify-center gap-1.5 rounded-none bg-white/5 py-3 text-[9px] font-bold tracking-[0.2em] text-gold-400 border border-gold-400/20 group-hover:bg-gold-400 group-hover:text-black group-hover:border-transparent transition-all duration-300 cursor-pointer uppercase text-center"
-                  id={`quick-add-${product.id}`}
-                >
-                  <Sparkles className="h-3 w-3" />
-                  INQUIRE ON WHATSAPP
-                </a>
+          {/* Subtle Golden Glow Spot in back */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-72 w-72 rounded-full bg-gold-400/5 blur-[100px] pointer-events-none group-hover:scale-125 transition-transform duration-700" />
+          
+          <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-8 md:gap-14">
+            <div className="flex-1 text-left space-y-4">
+              <div className="inline-flex items-center gap-1.5 rounded-none border border-gold-400/25 bg-gold-950/20 px-3 py-1.5 text-[9px] font-bold tracking-[0.25em] text-gold-400 uppercase">
+                <Sparkles className="h-3 w-3 shrink-0" />
+                <span>EXQUISITE VISUAL TOUR AVAILABLE</span>
               </div>
-            ))}
+              <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl text-white font-normal leading-tight">
+                Embark on an Indulgent <span className="text-gold-400 italic">Spa Virtual Walkthrough</span>
+              </h3>
+              <p className="text-xs sm:text-sm text-white/60 font-light leading-relaxed max-w-2xl font-sans">
+                Witness our state-of-the-art facility in federal housing Lugbe first-hand. Explore our luminescent facial tables, certified skincare solutions, and quiet calming spaces. Play with soft audio included.
+              </p>
+            </div>
+            
+            <div className="shrink-0 w-full md:w-auto flex flex-col items-center">
+              <button
+                onClick={() => setActivePage('spa-tour')}
+                className="w-full md:w-auto relative flex items-center justify-center gap-3 bg-gold-400 hover:bg-gold-300 text-black px-10 py-5 text-xs font-bold tracking-[0.25em] uppercase transition-all duration-300 shadow-xl shadow-gold-400/5 select-none active:scale-95 cursor-pointer"
+                id="home-spa-tour-cta"
+              >
+                <span>ENTER VIRTUAL TOUR 🎥</span>
+              </button>
+              <span className="text-[9px] text-white/30 font-mono mt-3 uppercase tracking-widest animate-pulse">Length: 0:13 | Lo-Fi Music Inside</span>
+            </div>
           </div>
-
+          
         </div>
       </section>
 

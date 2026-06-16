@@ -14,11 +14,11 @@ export default function Services({ onSelectService }: ServicesProps) {
   const categories: string[] = [
     'All',
     'Facials',
+    'Nails',
     'Pedicure',
     'Waxing',
-    'Scrub',
     'Massage',
-    'Teeth Whitening'
+    'Braces'
   ];
 
   const filteredServices = selectedCategory === 'All' 
@@ -38,7 +38,7 @@ export default function Services({ onSelectService }: ServicesProps) {
           Redefine <span className="italic">Your</span> Self-Care
         </h1>
         <p className="text-sm leading-relaxed text-white/70 font-light tracking-wide">
-          Our specialists combine high-grade biocompatible active agents, warm basalt volcanic stones, and hand-sculpted pigmentation techniques inside our Victoria Island studio.
+          Our specialists combine high-grade biocompatible active agents, warm basalt volcanic stones, and hand-sculpted pigmentation techniques inside our Abuja studio.
         </p>
       </div>
 
@@ -71,16 +71,41 @@ export default function Services({ onSelectService }: ServicesProps) {
             transition={{ duration: 0.5, delay: idx * 0.05 }}
             className="flex flex-col sm:flex-row gap-6 bg-[#0c0c0c] border border-white/10 p-6.5 rounded-none hover:border-gold-400/50 transition-all duration-300 group"
           >
-            {/* Fluid Image Box */}
-            <div className="relative w-full sm:w-52 h-48 sm:h-auto overflow-hidden rounded-none shrink-0">
-              <img
-                src={service.image}
-                alt={service.name}
-                className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-              <div className="absolute bottom-3 left-3 flex items-center space-x-1.5 rounded-none bg-[#0A0A0A] px-2.5 py-1 border border-white/10 text-[9px] font-bold text-gold-400 tracking-wider">
+            {/* Elegant Card Header with Image or Interactive Video */}
+            <div className="relative w-full sm:w-52 h-48 sm:h-auto min-h-[180px] overflow-hidden rounded-none shrink-0 bg-[#0e0e0e] border border-white/5 flex flex-col justify-center items-center">
+              {service.video ? (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  controls
+                  className="absolute inset-0 h-full w-full object-cover opacity-90 z-10"
+                >
+                  <source src={service.video} type="video/mp4" />
+                </video>
+              ) : service.image ? (
+                <img
+                  src={service.image}
+                  alt={service.name}
+                  referrerPolicy="no-referrer"
+                  className="absolute inset-0 h-full w-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-500"
+                />
+              ) : (
+                <>
+                  <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(212,175,55,0.01)_1px,transparent_1px),linear-gradient(to_bottom,rgba(212,175,55,0.01)_1px,transparent_1px)] bg-[size:2rem_2rem]" />
+                  
+                  <span className="absolute text-7xl font-serif font-black tracking-widest text-[#f5eae4]/2 select-none uppercase">
+                    {service.category.substring(0, 3)}
+                  </span>
+                  
+                  <Sparkles className="h-7 w-7 text-gold-400/20 mb-2 group-hover:text-gold-400/50 group-hover:scale-105 transition-all duration-305" />
+                  <span className="text-[8px] font-mono tracking-[0.25em] text-white/30 uppercase">FOC World SANCTUARY</span>
+                </>
+              )}
+              
+              <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/20 to-transparent z-0" />
+              <div className="absolute bottom-3 left-3 flex items-center space-x-1.5 rounded-none bg-[#0A0A0A] px-2.5 py-1 border border-white/10 text-[9px] font-bold text-gold-400 tracking-wider z-20">
                 <Clock className="h-3 w-3" />
                 <span>{service.duration}</span>
               </div>
@@ -135,7 +160,7 @@ export default function Services({ onSelectService }: ServicesProps) {
       {/* Bespoke Footnote Quality Guarantee */}
       <div className="mt-20 rounded-none border border-white/10 bg-[#0c0c0c] p-8 text-center max-w-3xl mx-auto">
         <Star className="h-6 w-6 text-gold-400 mx-auto mb-3" />
-        <h4 className="font-serif text-xl font-bold text-gold-400 uppercase tracking-wider">The FOC Quality Guarantee</h4>
+        <h4 className="font-serif text-xl font-bold text-gold-400 uppercase tracking-wider">The FOC World Quality Guarantee</h4>
         <p className="text-xs text-white/60 font-light max-w-xl mx-auto mt-2 leading-relaxed">
           Every session uses pristine, single-use sterilized tools, high-frequency ozone therapy, and organic botanists extracts. Our primary objective is your complete sanctuary experience and confidence transformation.
         </p>

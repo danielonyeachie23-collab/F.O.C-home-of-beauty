@@ -31,7 +31,7 @@ export default function Footer({ setActivePage }: FooterProps) {
           <div className="lg:col-span-4 flex flex-col space-y-6">
             <div className="flex flex-col items-start">
               <div className="flex items-center gap-1.5">
-                <span className="font-serif text-3xl font-light tracking-[0.25em] text-gold-400 uppercase">FOC</span>
+                <span className="font-serif text-2xl sm:text-3xl font-light tracking-[0.2em] text-gold-400 uppercase">FOC World</span>
                 <Sparkles className="h-4.5 w-4.5 text-gold-400" />
               </div>
               <span className="text-[9px] font-bold tracking-[0.4em] text-white/40 uppercase mt-1">
@@ -49,12 +49,9 @@ export default function Footer({ setActivePage }: FooterProps) {
                 &ldquo;{CEO_INFO.quote}&rdquo;
               </blockquote>
               <div className="mt-4 flex items-center space-x-3">
-                <img 
-                  src={CEO_INFO.image} 
-                  alt={CEO_INFO.name} 
-                  className="h-8 w-8 rounded-none object-cover border border-gold-400/30"
-                  referrerPolicy="no-referrer"
-                />
+                <div className="h-8 w-8 rounded-none bg-gold-950 border border-gold-400/50 flex items-center justify-center font-bold text-[10px] text-gold-400 font-mono tracking-tighter shrink-0 select-none">
+                  OD
+                </div>
                 <div>
                   <h4 className="text-[10px] font-bold tracking-[0.15em] text-gold-400 uppercase">{CEO_INFO.name}</h4>
                   <p className="text-[9px] text-[#f5eae4]/40 font-light">{CEO_INFO.title}</p>
@@ -69,10 +66,9 @@ export default function Footer({ setActivePage }: FooterProps) {
             <div className="flex flex-col space-y-3 text-xs uppercase tracking-widest font-semibold">
               <button onClick={() => setActivePage('home')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-home">Welcome Home</button>
               <button onClick={() => setActivePage('services')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-services">Premium pampering</button>
-              <button onClick={() => setActivePage('shop')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-shop">Boutique Corner</button>
+              <button onClick={() => setActivePage('spa-tour')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-spatour">Spa Tour Video 🎥</button>
+              <button onClick={() => setActivePage('boutique')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-boutique">Boutique Catalog</button>
               <button onClick={() => setActivePage('booking')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-booking">Schedule Grace</button>
-              <button onClick={() => setActivePage('gallery')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-gallery">Transformations</button>
-              <button onClick={() => setActivePage('blog')} className="w-fit text-left text-white/60 hover:text-gold-400 transition-colors cursor-pointer" id="footer-link-blog">Luxury Archives</button>
             </div>
           </div>
 
@@ -82,7 +78,7 @@ export default function Footer({ setActivePage }: FooterProps) {
             <ul className="flex flex-col space-y-4 text-xs font-light text-white/70">
               <li className="flex items-start space-x-3 leading-relaxed">
                 <MapPin className="h-4 w-4 mt-0.5 text-gold-400 shrink-0" />
-                <span>Suite 204, Royal Oasis Heights, Beauty Boulevard Road, Victoria Island, Lagos</span>
+                <span>Shop 13 Upstairs, KS Plaza, Opposite Polaris Bank, Federal Housing Lugbe, Abuja</span>
               </li>
               <li className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-gold-400 shrink-0" />
@@ -134,7 +130,7 @@ export default function Footer({ setActivePage }: FooterProps) {
 
         {/* Lower copyright row */}
         <div className="mt-14 border-t border-white/10 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-white/30 space-y-4 md:space-y-0">
-          <p>&copy; {new Date().getFullYear()} FOC Beauty World. Elegantly Protected.</p>
+          <p>&copy; {new Date().getFullYear()} FOC World. Elegantly Protected.</p>
           <div className="flex items-center space-x-6">
             <button
               onClick={() => setActivePage('contact')}

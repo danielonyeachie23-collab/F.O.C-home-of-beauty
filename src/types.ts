@@ -7,6 +7,7 @@ export interface Service {
   description: string;
   benefits: string[];
   image: string;
+  video?: string;
 }
 
 export interface Product {

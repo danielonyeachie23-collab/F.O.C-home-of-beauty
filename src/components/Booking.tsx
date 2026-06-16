@@ -75,6 +75,31 @@ export default function Booking({ preselectedService, clearPreselection }: Booki
     if (customerName && customerEmail && customerPhone) {
       setCompleteBooking(true);
       clearPreselection();
+
+      // Formulate detailed, luxury-styled email payload
+      const subject = encodeURIComponent(`[FOC World Sanctuary Reservation] - ${selectedService.name} Booking`);
+      const body = encodeURIComponent(
+        `Hello FOC World Team,\n\n` +
+        `A new premium appointment reservation has been drafted on the FOC World portal!\n\n` +
+        `--- SESSION SUMMARY ---\n` +
+        `• Treatment: ${selectedService.name}\n` +
+        `• Duration: ${selectedService.duration}\n` +
+        `• Assigned Date: ${selectedDate}\n` +
+        `• Appointment Time: ${selectedTimeSlot}\n` +
+        `• Admission Cost: ₦${selectedService.price.toLocaleString()}\n\n` +
+        `--- GUEST DETAILS ---\n` +
+        `• Client Name: ${customerName}\n` +
+        `• Email Address: ${customerEmail}\n` +
+        `• WhatsApp Phone: ${customerPhone}\n` +
+        `• Special Requests: ${customerNotes || 'None'}\n\n` +
+        `Best regards,\n` +
+        `FOC World Automated Concierge Desk`
+      );
+
+      // Automated client-side dispatch trigger
+      setTimeout(() => {
+        window.location.href = `mailto:foccworld@gmail.com?subject=${subject}&body=${body}`;
+      }, 400);
     }
   };
 
@@ -119,7 +144,7 @@ export default function Booking({ preselectedService, clearPreselection }: Booki
             </div>
 
             <h2 className="font-serif text-3xl font-light text-white uppercase tracking-wider">Appointment Reserved</h2>
-            <p className="text-[10px] text-gold-400 mt-2 uppercase font-bold tracking-[0.2em]">FOC Victoria Island Sanctuary</p>
+            <p className="text-[10px] text-gold-400 mt-2 uppercase font-bold tracking-[0.2em]">FOC World Lugbe Abuja Sanctuary</p>
 
             {/* Recipt block */}
             <div className="mt-8 max-w-md mx-auto rounded-none bg-[#0A0A0A] border border-white/10 p-6 text-left text-xs space-y-3">
@@ -137,13 +162,44 @@ export default function Booking({ preselectedService, clearPreselection }: Booki
               We have dispatched a booking voucher to <span className="text-white font-medium">{customerEmail}</span>. Our reception concierge will also contact your phone over WhatsApp to double-check safe arrivals and complimentary refreshment preferences.
             </p>
 
-            <button
-              onClick={handleResetBooking}
-              className="mt-8 rounded-none bg-gold-400 px-8 py-3.5 text-xs font-bold tracking-[0.2em] text-black uppercase hover:bg-gold-300 transition duration-300 cursor-pointer"
-              id="booking-reset-btn"
-            >
-              SCHEDULE ANOTHER SESSION
-            </button>
+            <div className="mt-8 flex flex-col sm:flex-row justify-center items-center gap-4">
+              <button
+                onClick={() => {
+                  const subject = encodeURIComponent(`[FOC World Sanctuary Reservation] - ${selectedService.name} Booking`);
+                  const body = encodeURIComponent(
+                    `Hello FOC World Team,\n\n` +
+                    `A new premium appointment reservation has been drafted on the FOC World portal!\n\n` +
+                    `--- SESSION SUMMARY ---\n` +
+                    `• Treatment: ${selectedService.name}\n` +
+                    `• Duration: ${selectedService.duration}\n` +
+                    `• Assigned Date: ${selectedDate}\n` +
+                    `• Appointment Time: ${selectedTimeSlot}\n` +
+                    `• Admission Cost: ₦${selectedService.price.toLocaleString()}\n\n` +
+                    `--- GUEST DETAILS ---\n` +
+                    `• Client Name: ${customerName}\n` +
+                    `• Email Address: ${customerEmail}\n` +
+                    `• WhatsApp Phone: ${customerPhone}\n` +
+                    `• Special Requests: ${customerNotes || 'None'}\n\n` +
+                    `Best regards,\n` +
+                    `FOC World Automated Concierge Desk`
+                  );
+                  window.location.href = `mailto:foccworld@gmail.com?subject=${subject}&body=${body}`;
+                }}
+                className="w-full sm:w-auto rounded-none bg-gold-400 px-8 py-3.5 text-xs font-bold tracking-[0.2em] text-black uppercase hover:bg-gold-300 transition duration-300 cursor-pointer flex items-center justify-center gap-2"
+                id="booking-mailto-btn"
+              >
+                <Mail className="h-4 w-4" />
+                SEND EMAIL TO FOC WORLD
+              </button>
+
+              <button
+                onClick={handleResetBooking}
+                className="w-full sm:w-auto rounded-none border border-white/20 bg-transparent px-8 py-3.5 text-xs font-bold tracking-[0.2em] text-white hover:text-gold-400 hover:border-gold-400 transition duration-300 cursor-pointer"
+                id="booking-reset-btn"
+              >
+                SCHEDULE ANOTHER SESSION
+              </button>
+            </div>
           </motion.div>
         ) : (
           /* BOOKING ENVELOPE FORM WIZARD */

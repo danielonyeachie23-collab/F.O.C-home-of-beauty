@@ -5,21 +5,18 @@ import { motion, AnimatePresence } from 'motion/react';
 interface HeaderProps {
   activePage: string;
   setActivePage: (page: string) => void;
-  cartCount: number;
-  onCartClick: () => void;
 }
 
-export default function Header({ activePage, setActivePage, cartCount, onCartClick }: HeaderProps) {
+export default function Header({ activePage, setActivePage }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'Home' },
     { id: 'services', label: 'Services & Pampering' },
-    { id: 'shop', label: 'Luxury Shop' },
-    { id: 'gallery', label: 'Transformation Gallery' },
-    { id: 'blog', label: 'Luxury Blog' },
+    { id: 'spa-tour', label: 'Spa Tour Video 🎥' },
+    { id: 'boutique', label: 'Boutique Catalog' },
     { id: 'booking', label: 'Book Appointment' },
-    { id: 'about', label: 'About FOC' },
+    { id: 'about', label: 'About FOC World' },
     { id: 'contact', label: 'Contact & FAQ' }
   ];
 
@@ -34,8 +31,8 @@ export default function Header({ activePage, setActivePage, cartCount, onCartCli
           id="header-logo-btn"
         >
           <div className="flex items-center gap-1.5">
-            <span className="font-serif text-3xl font-normal italic tracking-widest text-gold-400 transition-colors uppercase group-hover:text-gold-300">
-              FOC
+            <span className="font-serif text-2xl sm:text-3xl font-normal italic tracking-widest text-gold-400 transition-colors uppercase group-hover:text-gold-300">
+              FOC World
             </span>
             <Sparkles className="h-4.5 w-4.5 text-gold-400 transition-transform group-hover:rotate-12" />
           </div>

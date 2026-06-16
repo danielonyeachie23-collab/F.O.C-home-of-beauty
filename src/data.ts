@@ -6,213 +6,55 @@ export const PHYSICAL_SALON_IMAGE = '/src/assets/images/foc_physical_salon_17808
 export const SERVICES: Service[] = [
   // FACIALS CATEGORY
   {
-    id: 's-facial-basic',
-    name: 'Basic Facial',
-    price: 14000,
+    id: 's-facial-treatment',
+    name: 'Facial Treatment',
+    price: 12000,
     duration: '45 Mins',
     category: 'Facials',
-    description: 'A soothing and refreshing introductory facial. Includes deep steam cleaning, gentle physical exfoliation, face massage, and a balancing botanical hydration mask.',
-    benefits: ['Cleanses skin pores', 'Gentle blackhead removal', 'Soothes and hydrates skin cell layers', 'Restores natural glow'],
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600'
+    description: 'Experience our signature therapeutic facial treatment. Below is our exclusive aesthetic guide showcasing our soothing deep steam cleansing, gentle physical exfoliation, and advanced botanical hydration masks.',
+    benefits: ['Cleanses and unclogs deep dermal pores', 'Promotes healthy skin elasticity and cell repair', 'Soothes, calms, and hydrates sensitive outer layers', 'Restores natural, radiant luxury glow instantly'],
+    image: '',
+    video: '/facial_treatment.mp4'
   },
+
+  // NAILS CATEGORY
   {
-    id: 's-facial-classic',
-    name: 'Classic Facial',
-    price: 15000,
+    id: 's-nails-classic',
+    name: 'Nails',
+    price: 5000,
     duration: '60 Mins',
-    category: 'Facials',
-    description: 'Our core therapeutic facial. Combines expert structural pore extractions, intensive fruit enzyme mask, and high-frequency active botanical serum infusion.',
-    benefits: ['Deep therapeutic facial treatment', 'Promotes healthy skin elasticity', 'Intense moisture lock-in', 'Clears build-up of daily impurities'],
-    image: 'https://images.unsplash.com/photo-1608748010899-18f300247112?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-facial-brighthing',
-    name: 'Brighthing Facial',
-    price: 16000,
-    duration: '60 Mins',
-    category: 'Facials',
-    description: 'Highly effective brightening session formulated with active Vitamin C complex, white mulberry extracts, and non-irritating lactic peel to lift dull skin cells.',
-    benefits: ['Brightens and balances skin tone', 'Conquers hyperpigmentation spots', 'Provides immediate radiant glow', 'Protects skin against environmental pollution'],
-    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-facial-fruit-hydrating',
-    name: 'Fruit Hydrating Facial',
-    price: 16000,
-    duration: '60 Mins',
-    category: 'Facials',
-    description: 'Treat your senses with natural berry, melon, and cucumber extracts blended with low-molecular hyaluronic acid to deeply quench parched skin.',
-    benefits: ['Delivers powerful hydration boost', 'Replenishes trace skin vitamins', 'Calms redness of sensitive skin', 'Plumps fine dehydration lines'],
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-facial-deep-cleansing',
-    name: 'Deep Cleansing Facial',
-    price: 18000,
-    duration: '75 Mins',
-    category: 'Facials',
-    description: 'The ultimate detox for cellular pores. Designed specifically to remove severe blackheads, excessive sebum, acne trigger points, and old cellular build-up.',
-    benefits: ['Meticulous manually refined extractions', 'High-frequency antibacterial massage', 'Minimizes pore diameter visibility', 'Calms oily skin layers and blemishes'],
-    image: 'https://images.unsplash.com/photo-1515377905703-c4788e51af15?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-facial-deman-planing',
-    name: 'Deman Planing',
-    price: 27000,
-    duration: '50 Mins',
-    category: 'Facials',
-    description: 'Dermaplaning exfoliation. Meticulously scrapes away old surface skin layers and vellus hair (peach fuzz) utilizing a specialized clinical surgical blade.',
-    benefits: ['Extremely smooth skin canvas result', 'Enables flawless cosmetic applications', 'Enhances dermal serum absorption by 300%', 'Instant dramatic skin refortification'],
-    image: 'https://images.unsplash.com/photo-1522337094326-98755044d168?auto=format&fit=crop&q=80&w=600'
+    category: 'Nails',
+    description: 'Bespoke custom nail styling and professional art designs. Includes precision cuticle care, professional preparation, expert gel or acrylic applications, and meticulous hand-painted details tailored to your custom style.',
+    benefits: ['Premium non-toxic durable gel materials', 'Meticulous detailed custom line art', 'Long-lasting high-gloss mirror shine', 'Full-service luxury hand pampering care'],
+    image: '/src/assets/images/IMG_20260605_170543.jpg'
   },
 
   // PEDICURE CATEGORY
   {
     id: 's-pedi-basic',
-    name: 'Basic Pedicure',
-    price: 12000,
+    name: 'Pedicure',
+    price: 10000,
     duration: '40 Mins',
     category: 'Pedicure',
     description: 'Quick nail tidying and conditioning. Includes botanical soap soak, precise shaping, cuticle pushing, standard pumice scrubbing, and moisturizing cream.',
     benefits: ['Trims and styles nails cleanly', 'Softens rough cuticles', 'Lifts dry skin surface', 'Leaves toes fully nourished'],
-    image: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-pedi-organic',
-    name: 'Organic Pedicure',
-    price: 14000,
-    duration: '50 Mins',
-    category: 'Pedicure',
-    description: 'An eco-friendly therapeutic foot retreat. Nourishes skin with organic essential oils, sugarcane brown scrubs, nourishing honey massage milk, and zero-chemical clay wraps.',
-    benefits: ['All organic plant active ingredients', 'Deeply therapeutic foot massage', 'Soothes active leg muscles', 'Exquisite natural premium polish finish'],
-    image: 'https://images.unsplash.com/photo-1604654894610-df63bc536371?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-pedi-paraffin',
-    name: 'Paraffin Pedicure',
-    price: 16000,
-    duration: '60 Mins',
-    category: 'Pedicure',
-    description: 'Unwind as feet are enveloped in therapeutic warm liquefied paraffin wax. Seals in moisture, softens calluses completely, and treats tired joints.',
-    benefits: ['Relieves joint stiffness and arthritis', 'Deep lock-in hydration for dry heels', 'Increases blood circulation', 'Silky, completely soft skin feel'],
-    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-pedi-cornfeet',
-    name: 'Corn Feet Therapy',
-    price: 16000,
-    duration: '60 Mins',
-    category: 'Pedicure',
-    description: 'Specialized clinic feet restoration focusing on careful removal of painful hard corns, rough calluses, and thick scales using safe, sterile tools.',
-    benefits: ['Professional corn and scaling clearing', 'Relieves walking friction discomfort', 'Smoothes and repairs calloused skin', 'Preventive foot wellness counselling'],
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-pedi-softing-exfoliating',
-    name: 'Softing & Exfoliating Pedicure',
-    price: 18000,
-    duration: '60 Mins',
-    category: 'Pedicure',
-    description: 'A lavish dual exfoliating scrub using active alpha-hydroxy fruit acids and natural sea salts to intensely buff and soften the toughest feet skin.',
-    benefits: ['Clears dead cellular debris seamlessly', 'Brightens and evens leg skin tone', 'Intense reflexology foot massage', 'Restores soft, youthful skin feel'],
-    image: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&q=80&w=600'
+    image: '/src/assets/images/IMG_20260605_173151.jpg'
   },
 
   // WAXING CATEGORY
   {
-    id: 's-wax-sugar',
-    name: 'Sugar Waxing',
-    price: 9000,
+    id: 's-waxing',
+    name: 'Waxing',
+    price: 15000,
     duration: '30 Mins',
     category: 'Waxing',
-    description: 'Traditional hair removal utilizing local all-natural paste of boiled sugar, lemon, and water. Extracts hair from roots in natural direction of growth.',
-    benefits: ['Less painful than standard wax', 'Zero chemicals or skin irritation', 'Gentle exfoliation for sensitive skin', 'Slower hair regrowth cycles'],
-    image: 'https://images.unsplash.com/photo-1522337094326-98755044d168?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-wax-underarm',
-    name: 'Under Arm Waxing',
-    price: 14000,
-    duration: '20 Mins',
-    category: 'Waxing',
-    description: 'Fast and sanitary underarm hair clearing. Uses specialized warm azulene wax containing chamomile extracts to reduce redness and keep skin smooth.',
-    benefits: ['Quick, long-lasting hair removal', 'No razor bumps or shadow markings', 'Locks out sweat glands irritation', 'Smoother and fairer underarms'],
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-wax-bikini',
-    name: 'Bikini Waxing',
-    price: 12000,
-    duration: '30 Mins',
-    category: 'Waxing',
-    description: 'Pragmatic, tidy bikini-line hair styling. Employs elastic standard hard wax suited for coarse hair in hypersensitive regions.',
-    benefits: ['High precision contour styling', 'Meticulous root extraction', 'Zero dynamic razor scrapes', 'Smooth skin for up to 4 complete weeks'],
-    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-wax-fullbody',
-    name: 'Full Body Wax',
-    price: 40000,
-    duration: '90 Mins',
-    category: 'Waxing',
-    description: 'Complete systemic hair contour clearing. Smooths limbs, arms, lines, shoulders, back, and stomach folder layers beautifully using premium wax formulas.',
-    benefits: ['Full body absolute grooming', 'Stops persistent ingrown hair nodes', 'Exfoliates skin dynamically in one go', 'Reduces hair growth volume over sessions'],
-    image: 'https://images.unsplash.com/photo-1522337094326-98755044d168?auto=format&fit=crop&q=80&w=600'
-  },
-
-  // SCRUB CATEGORY
-  {
-    id: 's-scrub-classic',
-    name: 'Classic Scrub',
-    price: 25000,
-    duration: '45 Mins',
-    category: 'Scrub',
-    description: 'Full-body aromatic salt or sugar scrub treatment. Gently removes cellular buildup, opens skin respiration, and stimulates lymph node flow.',
-    benefits: ['Rejuvenates exhausted skin', 'Improves body cellular respiration', 'Stimulates lymphatic flow', 'Silky, moisturized epidermis'],
-    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-scrub-sugar-salt',
-    name: 'Sugar & Salt Scrub',
-    price: 30000,
-    duration: '60 Mins',
-    category: 'Scrub',
-    description: 'Our dual-action polish. Brown sugar hydrates and softens, while fine marine magnesium crystals deep-cleanse pores and replenish essential minerals.',
-    benefits: ['Simultaneous deep buffers and hydrators', 'Imbues skin with vital magnesium', 'Highly uniform skin texture polishing', 'Blended in sweet rich almond oil infusions'],
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-scrub-moroccan',
-    name: 'Moroccan Hammam Scrub',
-    price: 35000,
-    duration: '75 Mins',
-    category: 'Scrub',
-    description: 'Authentic Maghreb bathing. Uses native Beldi black soap (eucalyptus olive oil extract), thorough skin clearing using an authentic Kessa glove, and steam infusion.',
-    benefits: ['Traditional deep pore decontamination', 'Increases blood oxygen levels', 'Intense full-body exfoliation', 'Removes deep embedded metabolic toxins'],
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-scrub-youghouts',
-    name: 'Youghouts Scrub Session',
-    price: 40000,
-    duration: '75 Mins',
-    category: 'Scrub',
-    description: 'Luxury probiotic yogurt-infused body scrub. Rich lactic acid gently dissolves skin cells while live cultures nourish and protect your dermal biome.',
-    benefits: ['Restores skin pH acid mantle', 'Intensely brightens cellular layers', 'Calms chronic skin irritation', 'Unmatched anti-inflammatory skin softness'],
-    image: 'https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600'
+    description: 'Professional body hair removal using premium gentle wax formulas. Safely, sanitarily, and smoothly removes hair from the roots for long-lasting performance.',
+    benefits: ['Quick, professional hair removal', 'Less painful premium wax formulas', 'Zero razor bumps or skin irritation', 'Slower, finer hair regrowth cycles'],
+    image: '',
+    video: '/waxing_video.mp4'
   },
 
   // MASSAGE CATEGORY
-  {
-    id: 's-massage-body-steaming',
-    name: 'Body Steaming',
-    price: 28000,
-    duration: '45 Mins',
-    category: 'Massage',
-    description: 'Step into our private thermostatic steam cabin. Combines high-pressure damp mist with eucalyptus and pine essential oils to open pores and airways.',
-    benefits: ['Deep airway and bronchial relief', 'Intense cellular toxic sweating', 'Relaxes muscle spasms instantly', 'Prepares body perfectly for further massages'],
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600'
-  },
   {
     id: 's-massage-relaxation',
     name: 'Relaxation Massage',
@@ -221,86 +63,26 @@ export const SERVICES: Service[] = [
     category: 'Massage',
     description: 'Pure stress relief. Smooth, long-gliding strokes with light-to-medium physical pressure, fully customized with soothing organic lavender aromatherapy.',
     benefits: ['Lowers physical cortisol stress', 'Enhances deep slate sleep cycles', 'Calms nervous system anxiety', 'Soothing full-body tranquility'],
-    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-massage-deeptissue',
-    name: 'Deep Tissue Massage',
-    price: 30000,
-    duration: '60 Mins',
-    category: 'Massage',
-    description: 'Therapeutic and structure-focused. Direct firm pressure on deep chronic muscle knots, myofascial lines, and tight tendons safely.',
-    benefits: ['Unwinds chronic shoulder and neck tension', 'Eases sore gym workout muscles', 'Improves posture joint mobility', 'Breaks down stiff fibrous tissue blocks'],
-    image: 'https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-massage-swedish',
-    name: 'Swedish Massage',
-    price: 30000,
-    duration: '60 Mins',
-    category: 'Massage',
-    description: 'Classical full-body Swedish strokes integrating circular rubbing (friction), passive kneading (petrissage), and gentle rhythm tapping to revitalize systemic energy.',
-    benefits: ['Increases blood serum oxygenation', 'Drains metabolic fluid waste', 'Soothes chronic fatigue states', 'Elevates mental clarity and wellness'],
-    image: 'https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-massage-eriotic',
-    name: 'Eriotic Therapeutic Session',
-    price: 38000,
-    duration: '75 Mins',
-    category: 'Massage',
-    description: 'Our proprietary sensual therapeutic ritual. Combines specialized high-quality essential botanical oils, feather-light strokes, and warm soothing compress alignments to awaken inner energy and dissolve mental strain.',
-    benefits: ['Dissolves deep psychic tension', 'Awakens cosmic life force energy', 'Imparts a deep state of total mental bliss', 'Ultra-luxurious VIP private treatment'],
-    image: 'https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-massage-foc-special',
-    name: 'Foc Special',
-    price: 100000,
-    duration: '150 Mins',
-    category: 'Massage',
-    description: 'The crowning luxury experience. A complete royal wellness journey combining private herbal steaming, an intensive organic scrub, warm stones Swedish massage, Vitamin C facial therapy, and custom refreshments.',
-    benefits: ['The absolute gold standard in self-care', 'Includes custom premium take-home aromatic oils', 'Unparalleled VIP attention from senior specialists', 'Total cognitive and physical absolute rebirth'],
-    image: 'https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600'
+    image: ''
   },
 
-  // TEETH WHITENING CATEGORY
+  // BRACES CATEGORY
   {
-    id: 's-teeth-1st',
-    name: '1st Procedure Teeth Whitening',
-    price: 30000,
-    duration: '45 Mins',
-    category: 'Teeth Whitening',
-    description: 'Laser cosmetic activation. Employs cold blue LED light technology paired with advanced carbamide gel to lift dark coffee, wine, and tea stains comfortably.',
-    benefits: ['Lifts stains up to 6 shades lighter', 'Safe, desensitizing gel formula', 'Instant social transformation', 'Preserves protective enamel outer layers'],
-    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-teeth-2nd',
-    name: 'Second Appointment Teeth Whitening',
-    price: 35000,
-    duration: '45 Mins',
-    category: 'Teeth Whitening',
-    description: 'Recommended supplementary session to seal stain resistance shields, lock in brightening color values, and guarantee prolonged pristine white glow.',
-    benefits: ['Ensures long-term white durability', 'Deep-seals micro enamel pores', 'Enhances shade brightness level further', 'Provides fresh, self-confident breath flow'],
-    image: 'https://images.unsplash.com/photo-1606811971618-4486d14f3f99?auto=format&fit=crop&q=80&w=600'
-  },
-  {
-    id: 's-teeth-clearners',
-    name: 'Clearners Job',
-    price: 40000,
-    duration: '60 Mins',
-    category: 'Teeth Whitening',
-    description: 'Comprehensive dental hygiene and deep tartar removal. Ultrasonic scaling removes stubborn plaque build-up, and fine abrasive mineral pastes polish teeth surfaces.',
-    benefits: ['Flawless deep tartar and plaque clearing', 'Polishes surfaces to glossy mirror smoothness', 'Supports dental gums line safety', 'Removes oral bad breath nodes completely'],
-    image: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600'
+    id: 's-braces',
+    name: 'Fashionable Braces',
+    price: 50000,
+    duration: '90 Mins',
+    category: 'Braces',
+    description: 'Professional orthodontic bracket placement and alignment services. Uses premium biocompatible brackets and advanced positioning tech to start your journey to a perfect smile.',
+    benefits: ['High precision professional placement', 'Premium hygienic brace brackets', 'Comfortable, secure adhesive bonding', 'Expert guidance on long-term dental care'],
+    image: '/src/assets/images/IMG_20260605_173416.jpg'
   }
 ];
 
 export const PRODUCTS: Product[] = [
   {
     id: 'p-luxury-wig-1',
-    name: 'FOC Empress HD Lace Silk Wig',
+    name: 'FOC World Empress HD Lace Silk Wig',
     price: 499000,
     category: 'Premium Wigs',
     image: '/src/assets/images/foc_burgundy_wig_1780834512063.png',
@@ -310,11 +92,11 @@ export const PRODUCTS: Product[] = [
   },
   {
     id: 'p-perfume-1',
-    name: 'Noire Gold Eau De Parfum',
-    price: 145000,
+    name: 'Riggs London Body Spray & Premium Mists',
+    price: 8000,
     category: 'Luxury Perfumes',
-    image: '/src/assets/images/foc_perfume_1780652655596.png',
-    description: 'An enchanting, long-lasting scent blending rare black orchids, dark plum, gold cedarwood, and warm vanilla absolute. Projects an aura of supreme confidence and allure.',
+    image: '/src/assets/images/riggs_collection_1780858604927.png',
+    description: 'Elevate your daily fragrance trail. Featuring the premium Riggs London Perfumed Deodorant Body Spray collection (including Only, Oud, and Armour, 250ml) and our highly sought-after Signature Rose Vanilla body mist.',
     rating: 4.9,
     featured: true
   },
@@ -368,11 +150,11 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'g-3',
-    title: 'Laser Teeth Whitening Miracle',
+    title: 'Braces Smile Transformation',
     beforeImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=300&q=50&blur=10',
     afterImage: 'https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?auto=format&fit=crop&q=80&w=600',
     category: 'Transformation',
-    description: 'Removal of severe coffee staining, brightening up by 7 complete shades in a single safe 45-minute treatment.'
+    description: 'Precision bracket placement and structural alignment resulting in a beautifully structured, radiant smile.'
   },
   {
     id: 'g-4',
@@ -389,7 +171,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Genevieve Carter',
     role: 'Vogue Nigeria Contributor',
     rating: 5,
-    comment: 'FOC is an experience unlike any other. The attention to detail is flawless. The Classic Scrub made my skin feel unbelievably smooth, and their signature perfumes have become my absolute favorite daily scent.',
+    comment: 'FOC World is an experience unlike any other. The attention to detail is flawless. The proprietary treatments and Relaxation Massage made my skin feel unbelievably smooth, and their signature perfumes have become my absolute favorite daily scent.',
     date: '2 weeks ago'
   },
   {
@@ -397,7 +179,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Dr. Evelyn Peters',
     role: 'Aesthetic Dermatologist',
     rating: 5,
-    comment: 'As a dermatologist, I am extremely particular about skincare treatments. FOC’s Deep Cleansing Facial uses incredibly high-end skin active agents and state-of-the-art procedures. My absolute recommendation for premium wellness.',
+    comment: 'As a dermatologist, I am extremely particular about skincare treatments. FOC World’s Deep Cleansing Facial uses incredibly high-end skin active agents and state-of-the-art procedures. My absolute recommendation for premium wellness.',
     date: '1 month ago'
   },
   {
@@ -405,25 +187,25 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Kofi Mensah',
     role: 'Gentleman Grooming Client',
     rating: 5,
-    comment: 'Absolutely superb. I regularly book the deep tissue massage after grueling gym cycles, and their luxurious silk modal boxers offer unparalleled daily comfort and luxurious fit. FOC is the master of self-care.',
+    comment: 'Absolutely superb. I regularly book the relaxation massage after grueling gym cycles, and their luxurious silk modal boxers offer unparalleled daily comfort and luxurious fit. FOC World is the master of self-care.',
     date: '3 weeks ago'
   }
 ];
 
 export const FAQS: FAQItem[] = [
   {
-    question: 'How do I prepare for my Sugar & Salt Scrub session?',
-    answer: 'We recommend arriving 10 minutes early in comfortable loose clothing. Avoid heavy shaving or waxing within 24 hours of your scrub to prevent skin sensitivity. Hydrate well before and after your treatment.',
+    question: 'How do I prepare for my Facial Treatment or Relaxation Massage session?',
+    answer: 'We recommend arriving 10 minutes early in comfortable loose clothing. For facials, please arrive with a clean face if possible. Hydrate well before and after your treatment for maximum benefit.',
     category: 'Beauty'
   },
   {
-    question: 'How long do the FOC Empress HD Lace wigs last?',
+    question: 'How long do the FOC World Empress HD Lace wigs last?',
     answer: 'With proper luxury care, our 100% Brazilian human virgin hair wigs can easily last between 1 to 2+ years. We provide an exclusive silk-lined storage box and detailed wash instructions with every wig purchase.',
     category: 'Products'
   },
   {
-    question: 'Is laser teeth whitening safe for sensitive dental enamel?',
-    answer: 'Absolutely. We utilize modern cold-LED light technology paired with a pH-balanced, desensitizing whitening gel. This completely protects the outer enamel layer while comfortably lifting heavy sub-surface stains.',
+    question: 'How long does a Fashionable Braces appointment take?',
+    answer: 'A standard professional bracket placement session takes about 90 to 120 minutes. Our certified specialists apply premium biocompatible materials and custom alignments to ensure precise positioning and clinical comfort.',
     category: 'Services'
   },
   {
@@ -434,9 +216,9 @@ export const FAQS: FAQItem[] = [
 ];
 
 export const CEO_INFO = {
-  name: 'Onyeachie Daniel',
+  name: 'Febe',
   title: 'Founder & Chief Executive Officer',
-  quote: 'True luxury lies in the confidence you carry. FOC was born from a vision to redefine beauty as an empowering, decadent sanctuary—where premium self-care meets modern sophistication.',
-  bio: 'Our CEO is a highly acclaimed entrepreneur passionate about setting global standards in high-end cosmetic styling and therapeutic treatments. Under her visionary leadership, FOC has evolved into a luxurious sanctuary for elite clientele seeking unparalleled beauty services, premium hair solutions, and majestic fragrance curations.',
-  image: '/src/assets/images/ceo_portrait_1780696236207.png'
+  quote: 'True luxury lies in the confidence you carry. FOC World was born from a vision to redefine beauty as an empowering, decadent sanctuary—where premium self-care meets modern sophistication.',
+  bio: 'Our CEO is a highly acclaimed entrepreneur passionate about setting global standards in high-end cosmetic styling and therapeutic treatments. Under her visionary leadership, FOC World has evolved into a luxurious sanctuary for elite clientele seeking unparalleled beauty services, premium hair solutions, and majestic fragrance curations.',
+  image: '/src/assets/images/foc_ceo_official.jpeg'
 };

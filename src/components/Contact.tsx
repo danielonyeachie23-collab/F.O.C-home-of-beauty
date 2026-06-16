@@ -49,7 +49,7 @@ export default function Contact() {
           Connect <span className="italic">With</span> Royalty
         </h1>
         <p className="text-sm leading-relaxed text-white/70 font-light tracking-wide">
-          Have an inquiry regarding luxury premium wig fittments, specific facial scrubs, or custom tattoo sketching? Reach our Victoria Island salon directly.
+          Have an inquiry regarding luxury premium wig fittments, specific facial scrubs, or custom tattoo sketching? Reach our Abuja salon directly.
         </p>
       </div>
 
@@ -173,8 +173,8 @@ export default function Contact() {
               <MapPin className="h-5 w-5 mt-0.5 text-gold-400 shrink-0" />
               <div className="text-xs">
                 <h4 className="font-bold text-white uppercase tracking-wider text-[10px]">Physical Hub</h4>
-                <p className="text-white/80 font-light mt-1">Victoria Island, Lagos</p>
-                <p className="text-white/40 text-[9px] mt-0.5">Suite 204 Royal Oasis Heights</p>
+                <p className="text-white/80 font-light mt-1">Shop 13 Upstairs, KS Plaza</p>
+                <p className="text-white/40 text-[9px] mt-0.5">Opposite Polaris Bank, Federal Housing Lugbe, Abuja</p>
               </div>
             </div>
           </div>
@@ -201,7 +201,7 @@ export default function Contact() {
                 </div>
               </div>
 
-              {/* Vector canvas portraying Victoria Island Lagos */}
+              {/* Vector canvas portraying Federal Housing Lugbe, Abuja */}
               <div className="relative aspect-square sm:aspect-video md:aspect-square w-full rounded-none bg-[#090909] border border-white/5 overflow-hidden flex flex-col justify-between p-3.5 select-none">
                 {/* Background Roads Grid Representation */}
                 <div className="absolute inset-0 opacity-[0.14] scale-105 pointer-events-none">
@@ -251,21 +251,21 @@ export default function Contact() {
 
                   {/* MAP LABELS AND PINS */}
                   <div className="relative w-full h-full">
-                    {/* FOC Prime PIN marker */}
-                    <div className="absolute bottom-[20%] right-[30%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                      {/* Pulse rings */}
-                      <span className="absolute inline-flex h-10 w-10 rounded-none bg-gold-400/20 opacity-75 animate-ping" />
-                      
-                      <div className="relative rounded-none border border-gold-400 bg-black px-2 mt-1.5 py-1 flex items-center space-x-1 shadow-lg text-[9px] font-bold text-gold-400">
-                        <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
-                        <span>FOC Salon Hub (Suite 204)</span>
+                      {/* FOC World Prime PIN marker */}
+                      <div className="absolute bottom-[20%] right-[30%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
+                        {/* Pulse rings */}
+                        <span className="absolute inline-flex h-10 w-10 rounded-none bg-gold-400/20 opacity-75 animate-ping" />
+                        
+                        <div className="relative rounded-none border border-gold-400 bg-black px-2 mt-1.5 py-1 flex items-center space-x-1 shadow-lg text-[9px] font-bold text-gold-400">
+                          <span className="h-1.5 w-1.5 rounded-full bg-gold-400 animate-pulse" />
+                          <span>FOC World Salon Hub (Shop 13 Upstairs)</span>
+                        </div>
                       </div>
-                    </div>
 
                     {/* Neighborhood Landmarks */}
-                    <div className="absolute top-[20%] left-[10%] text-[8px] text-white/30 font-medium">Lagos Lagoon</div>
-                    <div className="absolute bottom-[30%] left-[8%] text-[8px] text-white/30 font-medium">Falomo Overpass Road</div>
-                    <div className="absolute top-[35%] right-[15%] text-[8px] text-white/30 font-medium">Victoria Island Mall</div>
+                    <div className="absolute top-[20%] left-[10%] text-[8px] text-white/30 font-medium">Abuja Airport Road</div>
+                    <div className="absolute bottom-[30%] left-[8%] text-[8px] text-white/30 font-medium">Federal Housing Estate</div>
+                    <div className="absolute top-[35%] right-[15%] text-[8px] text-white/30 font-medium">Polaris Bank</div>
 
                     {/* Dynamic Simulated User starting pin */}
                     {simulatedRoute && (
@@ -280,7 +280,7 @@ export default function Contact() {
                   {/* Lower zoom levers */}
                   <div className="flex justify-between items-center bg-black/95 p-2.5 rounded-none border border-white/10 mt-auto">
                     <div className="text-[9px] text-white/50">
-                      Coordinates: <span className="font-mono text-gold-400">6.4281&deg; N, 3.4219&deg; E</span>
+                      Coordinates: <span className="font-mono text-gold-400">8.9806&deg; N, 7.2312&deg; E</span>
                     </div>
                     {/* Zoom Toggle */}
                     <div className="flex items-center space-x-1.5">
@@ -324,7 +324,7 @@ export default function Contact() {
                   <input
                     type="text"
                     required
-                    placeholder="Enter starting location (e.g. Lekki Phase 1)"
+                    placeholder="Enter starting location (e.g. Wuse 2)"
                     value={routeStart}
                     onChange={(e) => setRouteStart(e.target.value)}
                     className="flex-1 rounded-none bg-[#0A0A0A] border border-white/10 px-3 py-2 text-xs text-white placeholder-white/30 focus:border-gold-400 outline-none"

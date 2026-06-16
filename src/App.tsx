@@ -3,21 +3,18 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Services from './components/Services';
-import Shop from './components/Shop';
+import Boutique from './components/Boutique';
 import Booking from './components/Booking';
-import Gallery from './components/Gallery';
 import About from './components/About';
 import Contact from './components/Contact';
-import Blog from './components/Blog';
-import { Service, Product, CartItem } from './types';
+import SpaTour from './components/SpaTour';
+import { Service } from './types';
 import { MessageSquare, Send, X, Check, Heart, Sparkles, Smile } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CEO_INFO } from './data';
 
 export default function App() {
   const [activePage, setActivePage] = useState<string>('home');
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [isCartOpen, setIsCartOpen] = useState<boolean>(false);
   
   // Selection hook to auto-populate appointment bookings
   const [preselectedService, setPreselectedService] = useState<Service | null>(null);
@@ -29,7 +26,7 @@ export default function App() {
   const [chatLog, setChatLog] = useState<Array<{ sender: 'ceo' | 'user'; text: string; time: string }>>([
     {
       sender: 'ceo',
-      text: 'Hello, darling! Welcome to FOC. I am Daniel, Founder & CEO. Are you looking to schedule some royal pampering or locate custom HD wigs today?',
+      text: 'Hello, darling! Welcome to FOC World. I am Febe, Founder & CEO. Are you looking to schedule some royal pampering today?',
       time: 'Just now'
     }
   ]);
@@ -48,24 +45,10 @@ export default function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  // Sync Cart total quantity counting
-  const cartCountCount = cart.reduce((total, item) => total + item.quantity, 0);
-
   // Shortcut routing functions
   const handleBookServiceRoute = (service: Service) => {
     setPreselectedService(service);
     setActivePage('booking');
-  };
-
-  const handleQuickAddProduct = (product: Product) => {
-    setCart((prev) => {
-      const existing = prev.find(item => item.product.id === product.id);
-      if (existing) {
-        return prev.map(item => item.product.id === product.id ? { ...item, quantity: item.quantity + 1 } : item);
-      }
-      return [...prev, { product, quantity: 1 }];
-    });
-    setIsCartOpen(true);
   };
 
   // Chat message submit simulator
@@ -86,15 +69,15 @@ export default function App() {
       const lower = userText.toLowerCase();
 
       if (lower.includes('wig') || lower.includes('hair') || lower.includes('lace')) {
-        ceoReply = 'Ah, our Empress HD Wigs are magnificent! Sewn from 100% human virgin hair. You can view our live fittings inside the "Luxury Shop" page or schedule a bespoke suite consultation on the "Book Appointment" tab!';
+        ceoReply = 'Ah, our Empress HD Wigs are magnificent! Sewn from 100% human virgin hair. You can schedule a bespoke consultation on the "Book Appointment" tab!';
       } else if (lower.includes('price') || lower.includes('cost') || lower.includes('much')) {
-        ceoReply = 'Our pampering starts at ₦9,000 for Sugar Waxing, up to ₦100,050 for our signature Foc Special package. Take a look at the "Services & Pampering" sheet to evaluate benefits!';
-      } else if (lower.includes('wax') || lower.includes('pedicure') || lower.includes('scrub') || lower.includes('appointment')) {
-        ceoReply = 'Excellent taste! Our Royal Facial exfoliations and 24K Gold Body Scrub sessions are popular. I suggest securing your hour directly on the "Book Appointment" tab to choose tomorrow’s slots!';
+        ceoReply = 'Our pampering starts at ₦15,000 for Waxing and Basic Pedicure, up to ₦120,000 for specialized services like Braces (Bracket Placement). Take a look at the "Services & Pampering" sheet to evaluate benefits!';
+      } else if (lower.includes('wax') || lower.includes('pedicure') || lower.includes('appointment')) {
+        ceoReply = 'Excellent taste! Our therapeutic Facial Treatments and Relaxation Massage sessions are popular. I suggest securing your hour directly on the "Book Appointment" tab to choose tomorrow’s slots!';
       } else if (lower.includes('hello') || lower.includes('hi') || lower.includes('hey')) {
         ceoReply = 'Hello to you! I hope your day is radiating confidence. Let me know if you would like me to spotlight any of our beauty therapies or boutique perfumes!';
       } else {
-        ceoReply = 'Fascinating question! FOC is fully equipped to deliver premium services tailored specifically for you. I suggest reserving a slot on our Booking page or leaving a note on our Contact form so our lead esthetician can draft your treatment!';
+        ceoReply = 'Fascinating question! FOC World is fully equipped to deliver premium services tailored specifically for you. I suggest reserving a slot on our Booking page or leaving a note on our Contact form so our lead esthetician can draft your treatment!';
       }
 
       setChatLog(prev => [...prev, { sender: 'ceo', text: ceoReply, time: now }]);
@@ -109,8 +92,6 @@ export default function App() {
       <Header
         activePage={activePage}
         setActivePage={setActivePage}
-        cartCount={cartCountCount}
-        onCartClick={() => setIsCartOpen(true)}
       />
 
       {/* 2. Main Content Screens */}
@@ -126,8 +107,6 @@ export default function App() {
             >
               <Home
                 setActivePage={setActivePage}
-                onBookService={handleBookServiceRoute}
-                onQuickAddProduct={handleQuickAddProduct}
               />
             </motion.div>
           )}
@@ -144,24 +123,19 @@ export default function App() {
             </motion.div>
           )}
 
-          {activePage === 'shop' && (
+          {activePage === 'boutique' && (
             <motion.div
-              key="shop"
+              key="boutique"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <Shop
-                cart={cart}
-                setCart={setCart}
-                isCartOpen={isCartOpen}
-                setIsCartOpen={setIsCartOpen}
-              />
+              <Boutique />
             </motion.div>
           )}
 
-          {activePage === 'booking' && (
+                  {activePage === 'booking' && (
             <motion.div
               key="booking"
               initial={{ opacity: 0 }}
@@ -173,18 +147,6 @@ export default function App() {
                 preselectedService={preselectedService}
                 clearPreselection={() => setPreselectedService(null)}
               />
-            </motion.div>
-          )}
-
-          {activePage === 'gallery' && (
-            <motion.div
-              key="gallery"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Gallery />
             </motion.div>
           )}
 
@@ -200,18 +162,6 @@ export default function App() {
             </motion.div>
           )}
 
-          {activePage === 'blog' && (
-            <motion.div
-              key="blog"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <Blog />
-            </motion.div>
-          )}
-
           {activePage === 'contact' && (
             <motion.div
               key="contact"
@@ -221,6 +171,18 @@ export default function App() {
               transition={{ duration: 0.3 }}
             >
               <Contact />
+            </motion.div>
+          )}
+
+          {activePage === 'spa-tour' && (
+            <motion.div
+              key="spa-tour"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <SpaTour setActivePage={setActivePage} />
             </motion.div>
           )}
         </AnimatePresence>
@@ -302,12 +264,12 @@ export default function App() {
               {/* Box Top Header */}
               <div className="bg-gradient-to-r from-gold-950 via-black to-gold-950 p-4 border-b border-gold-500/15 flex items-center justify-between">
                 <div className="flex items-center space-x-3 text-left">
-                  <div className="relative">
-                    <img
-                      src={CEO_INFO.image}
-                      alt={CEO_INFO.name}
-                      className="h-9 w-9 rounded-full object-cover border border-gold-400/40"
+                  <div className="relative shrink-0">
+                    <img 
+                      src={CEO_INFO.image} 
+                      alt={CEO_INFO.name} 
                       referrerPolicy="no-referrer"
+                      className="h-9 w-9 rounded-full object-cover object-top border border-gold-400/50"
                     />
                     <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-emerald-500 border border-black" />
                   </div>
@@ -315,7 +277,7 @@ export default function App() {
                     <h4 className="text-xs font-bold text-white uppercase tracking-wider">{CEO_INFO.name}</h4>
                     <p className="text-[9px] text-[#f5eae4]/60 flex items-center gap-1">
                       <Sparkles className="h-3 w-3 text-gold-400" />
-                      <span>FOC Founder & CEO</span>
+                      <span>FOC World Founder & CEO</span>
                     </p>
                   </div>
                 </div>

@@ -16,7 +16,7 @@ export default function About() {
           Crafting <span className="italic">Sovereign</span> Grace
         </h1>
         <p className="text-sm leading-relaxed text-white/70 font-light tracking-wide">
-          An intimate chronicle of FOC—how a vision of unwavering self-care and confidence evolved into Victoria Island’s premier luxury aesthetic destination.
+          An intimate chronicle of FOC World—how a vision of unwavering self-care and confidence evolved into Abuja’s premier luxury aesthetic destination.
         </p>
       </div>
 
@@ -26,13 +26,18 @@ export default function About() {
         <div className="relative">
           {/* Decorative frame elements to represent high-end beauty brand */}
           <div className="absolute -top-4 -left-4 h-full w-full rounded-none border-2 border-gold-400/20 -z-10" />
-          <img
-            src={CEO_INFO.image}
-            alt={CEO_INFO.name}
-            className="rounded-none shadow-xl shadow-gold-500/5 object-cover w-full max-h-[500px]"
-            referrerPolicy="no-referrer"
-          />
-          <div className="absolute bottom-6 right-6 left-6 rounded-none border border-white/10 bg-[#0A0A0A]/90 backdrop-blur-md p-5 text-left">
+          <div className="rounded-none border border-white/10 bg-[#0c0c0c] h-[520px] relative overflow-hidden shadow-xl shadow-gold-500/5 group">
+            <img 
+              src={CEO_INFO.image} 
+              alt={CEO_INFO.name} 
+              referrerPolicy="no-referrer"
+              className="absolute inset-0 h-full w-full object-cover object-[center_18%] transition-transform duration-700 group-hover:scale-105"
+            />
+            {/* Elegant luxury overlays */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/15 to-transparent z-0" />
+            <div className="absolute inset-0 border border-white/5" />
+          </div>
+          <div className="absolute bottom-6 right-6 left-6 rounded-none border border-white/10 bg-[#0A0A0A]/95 backdrop-blur-md p-5 text-left z-10 shadow-lg">
             <h4 className="font-serif text-lg font-light text-white uppercase tracking-wider">{CEO_INFO.name}</h4>
             <p className="text-[10px] text-gold-400 font-bold uppercase tracking-[0.2em] mt-1">{CEO_INFO.title}</p>
           </div>
@@ -52,7 +57,7 @@ export default function About() {
           </p>
           
           <p className="text-sm leading-relaxed text-white/60 font-light italic">
-            FOC, meaning Family Of Confidence, represents our firm oath to the transformational power of self-care. We believe entering our doors isn’t merely a cosmetic routine—it is a sacred investment in your physical confidence, mental grounding, and absolute pampering.
+            FOC World, our name standing for Family Of Confidence, represents our firm oath to the transformational power of self-care. We believe entering our doors isn’t merely a cosmetic routine—it is a sacred investment in your physical confidence, mental grounding, and absolute pampering.
           </p>
         </div>
       </div>
@@ -90,7 +95,7 @@ export default function About() {
               </div>
               <h3 className="font-serif text-xl font-light text-white tracking-wide uppercase">Premium Curated Actives</h3>
               <p className="mt-3 text-xs leading-relaxed text-white/60 font-light">
-                We reject standard, cheap sulfate cosmetic formulas. FOC partners with French perfumers, premium organic oil mills, and advanced dermal labs to source active gold scrubs and desensitizing gels.
+                We reject standard, cheap sulfate cosmetic formulas. FOC World partners with French perfumers, premium organic oil mills, and advanced dermal labs to source active gold scrubs and desensitizing gels.
               </p>
             </div>
             <div className="mt-8 flex items-center gap-1.5 text-[9px] text-gold-400 uppercase font-bold tracking-widest">
